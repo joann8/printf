@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/05 22:18:19 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/05 22:40:54 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,9 @@ int ft_printf(const char *input, ...)
 	char 			*tmp1;
 	char 			*tmp2;
 	flag_list		flags;
+	int result;
 
+	result = 0;
 
 	res = ft_strdup("");
 
@@ -257,9 +259,10 @@ int ft_printf(const char *input, ...)
 			i = i + plus + 1;
 	}
 	va_end(args);
+	result = ft_strlen(res);
 	ft_putstr_fd(res, 1);
 	ft_free(res, list, str);
 //	free_struct(list);
-	return(1);
+	return(result);
 }
 
