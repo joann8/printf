@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/05 21:50:33 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 12:12:40 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ unsigned int	ft_atoi_printf(const char *str, unsigned int *pos);
 void			print_flags(flag_list flags);
 unsigned int	ft_width(flag_list *flags, va_list args);
 unsigned int	ft_length(flag_list *flags, va_list args);
+void			ft_int_left(char *s, char *tmp, unsigned int width);
+void			ft_int_right(char *s, char *tmp, unsigned int width, char c);
+
 
 
 #endif

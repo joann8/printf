@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/05 22:40:54 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 11:11:15 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,13 @@ int	flag_parsing(flag_list *flags, char *str, unsigned int *pos)
 	//printf("2.str[%d] = %c\n", i, str[i]);
 	if (str[i] == '0')
 	{
-		if (str[i + 1] == '-')
+		/*if (str[i + 1] == '-')
 		{
 			flags->b_flag_minus = 1;
 			i++;
 		}
-		else
-			flags->b_flag_zero = 1;
+		else*/
+		flags->b_flag_zero = 1;
 		i++;
 	}
 	//printf("3.str[%d] = %c\n", i, str[i]);
@@ -151,6 +151,7 @@ int	flag_parsing(flag_list *flags, char *str, unsigned int *pos)
 	if (str[i] == '.')
 	{
 		flags->b_precision = 1;
+		flags->b_flag_zero = 0; // pas sure, check pour p?
 		i++;
 	}
 	if (str[i] == '*')
@@ -222,7 +223,8 @@ int ft_printf(const char *input, ...)
 		if (str[i])
 			if (flag_parsing(&flags, str + i + 1, &plus) == 0)
 				return (-1);
-	//	print_flags(flags);
+		//printf("\n***flags tour***\n");
+		//print_flags(flags);
 		//printf("i apres parsing = %u\n", i);
 		tmp1 = ft_strdup_pf(str, j, i);
 		tmp2 = ft_strjoin_printf(res, tmp1);

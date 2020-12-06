@@ -15,9 +15,49 @@ int main()
 	c1 = 'd';
 	c2 = 'j';
 
+// TEST HEXA
+	printf("\n\npf | un %x deux %X trois %X\n", 11, 222, 333);	
+	ft_printf("my | un %x deux %X trois %X\n", 11, 222, 333);	
+	printf("\n\npf | un %0x deux %-5X trois %05x\n", 11, -222, 333);	
+	ft_printf("my | un %0x deux %-5X trois %05x\n", 11, -222, 333);	
+	printf("\n\npf | un %0x deux %05X trois %05x\n", 11, -222, 333);	
+	ft_printf("my | un %0x deux %05X trois %05x\n", 11, -222, 333);	
+	printf("\n\npf | un %x deux %-.5x trois %.5x\n", 11, -222, 333);	
+	ft_printf("my | un %x deux %-.5x trois %.5x\n", 11, -222, 333);	
+	printf("\n\npf | un %010x deux %-.8x trois %-8X.\n", 11, -222, 333);	
+	ft_printf("my | un %010x deux %-.8x trois %-8X.\n", 11, -222, 333);	
+	
+/* TEST UNSIN 
+	printf("\n\npf | un %u deux %u trois %u\n", 11, 222, 333);	
+	ft_printf("my | un %u deux %u trois %u\n", 11, 222, 333);	
+	printf("\n\npf | un %0u deux %-5u trois %05u\n", 11, -222, 333);	
+	ft_printf("my | un %0u deux %-5u trois %05u\n", 11, -222, 333);	
+	printf("\n\npf | un %0u deux %05u trois %05u\n", 11, -222, 333);	
+	ft_printf("my | un %0u deux %05u trois %05u\n", 11, -222, 333);	
+	printf("\n\npf | un %u deux %-.5u trois %.5u\n", 11, -222, 333);	
+	ft_printf("my | un %u deux %-.5u trois %.5u\n", 11, -222, 333);	
+	printf("\n\npf | un %010u deux %-.8u trois %-8u.\n", 11, -222, 333);	
+	ft_printf("my | un %010u deux %-.8u trois %-8u.\n", 11, -222, 333);	
+	
+*/
+/* TEST INT
+	printf("\n\npf | un %d deux %d trois %d\n", 11, -222, 333);	
+	ft_printf("my | un %d deux %d trois %d\n", 11, -222, 333);	
+	printf("\n\npf | un %0d deux %-5d trois %05d\n", 11, -222, 333);	
+	ft_printf("my | un %0d deux %-5d trois %05d\n", 11, -222, 333);	
+	printf("\n\npf | un %0d deux %05d trois %05d\n", 11, -222, 333);	
+	ft_printf("my | un %0d deux %05d trois %05d\n", 11, -222, 333);	
+	printf("\n\npf | un %d deux %-.5d trois %.5d\n", 11, -222, 333);	
+	ft_printf("my | un %d deux %-.5d trois %.5d\n", 11, -222, 333);	
+	printf("\n\n pf | un %010d deux %-.8d trois %-8d.\n", 11, -222, 333);	
+	ft_printf("my | un %010d deux %-.8d trois %-8d.\n", 11, -222, 333);	
+*/	
+
+//TEST GENERAL
+/*
 	printf("\n\n%%%d.pf | un %-*s %5c trois %-4s %-*c cinq%%\n",1, -20, s1,c1, s2, -5, c2);	
 	ft_printf("\n%%%d.my | un %-*s %5c trois %-4s %-*c cinq%%\n",1, -20, s1,c1, s2, -5, c2);	
-
+*/
 
 /*
  // TEST 
