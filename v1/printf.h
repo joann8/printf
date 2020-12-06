@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 12:12:40 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 17:43:14 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct a_list
 	void (*f)(va_list, char **, flag_list*);
 }				arg_list;
 
+arg_list		*struct_init(void);
 int				ft_printf(const char *input, ...);
 void			ft_percent(va_list args, char **res, flag_list *flags);
 void			ft_char(va_list args, char **res, flag_list *flags);
@@ -59,9 +60,12 @@ unsigned int	ft_atoi_printf(const char *str, unsigned int *pos);
 void			print_flags(flag_list flags);
 unsigned int	ft_width(flag_list *flags, va_list args);
 unsigned int	ft_length(flag_list *flags, va_list args);
+void			flag_parsing_help(flag_list *flags, char *str, unsigned int *index);
+int				flag_parsing(flag_list *flags, char *str, unsigned int *pos);
 void			ft_int_left(char *s, char *tmp, unsigned int width);
 void			ft_int_right(char *s, char *tmp, unsigned int width, char c);
-
-
+void			ft_free(char *res, arg_list *list, char *str);
+int				is_a_type(char c);
+void			flag_init(flag_list *flags);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/05 22:03:35 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 18:25:14 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,56 @@ unsigned int	ft_length(flag_list *flags, va_list args)
 	else if (flags->v_length > 0)
 		length = flags->v_length;
 	return (length);
+}
+
+void	flag_parsing_help(flag_list *flags, char *str, unsigned int *index)
+{
+	unsigned int i;
+
+	i = *index;
+	if (str[i] == '*')
+	{
+		flags->b_star_width = 1;
+		i++;
+	}	
+	if (str[i] >= '0' && str[i] <= '9')
+		flags->v_width = ft_atoi_printf(str + i, &i);
+	if (str[i] == '.')
+	{
+		flags->b_precision = 1;
+		flags->b_flag_zero = 0; // pas sure, check pour p?
+		i++;
+	}
+	if (str[i] == '*')
+	{
+		flags->b_star_length = 1;
+		i++;
+	}	
+	if (str[i] >= '0' && str[i] <= '9')
+		flags->v_length = ft_atoi_printf(str + i, &i);
+	*index = i;
+}
+
+int	flag_parsing(flag_list *flags, char *str, unsigned int *pos)
+{
+	unsigned int i;
+
+	i = 0;
+	if (str[i] == '-')
+	{
+		flags->b_flag_minus = 1;
+		i++;
+		//if (str[i] == '0')
+		//	i++;
+	}	
+	if (str[i] == '0' && i == 0) //1er param
+	{
+		flags->b_flag_zero = 1;
+		i++;
+	}
+	flag_parsing_help(flags, str, &i);
+	if (is_a_type(str[i]) == 0)
+		return (0);
+	*pos = *pos + i + 1;
+	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2020/12/06 14:37:33 by jacher           ###   ########.fr        #
+#    Updated: 2020/12/06 17:20:42 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ srcs/ft_hexa.c \
 srcs/ft_int.c \
 srcs/ft_parsing_help.c \
 srcs/ft_atoi_printf.c \
+srcs/ft_utils.c \
 ft_printf.c
 
 OBJS = ${SRCS:.c=.o}
