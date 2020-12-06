@@ -6,15 +6,14 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/05 22:04:24 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 20:41:21 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../printf.h"
-#include <stdio.h>
 
-static void ft_string_left(char *s, char *tmp, unsigned int width, unsigned int length)
+static void		ft_string_left(char *s, char *tmp, unsigned int width,
+								unsigned int length)
 {
 	unsigned int i;
 
@@ -32,14 +31,15 @@ static void ft_string_left(char *s, char *tmp, unsigned int width, unsigned int 
 	tmp[i] = '\0';
 }
 
-static void ft_string_right(char *s, char *tmp, unsigned int width, unsigned int length)
+static void		ft_string_right(char *s, char *tmp, unsigned int width,
+									unsigned int length)
 {
 	unsigned int i;
 	unsigned int j;
 
 	i = 0;
 	tmp[width] = '\0';
-	while (length + i < width )
+	while (length + i < width)
 	{
 		tmp[i] = ' ';
 		i++;
@@ -52,18 +52,18 @@ static void ft_string_right(char *s, char *tmp, unsigned int width, unsigned int
 	}
 }
 
-void	ft_string(va_list args, char **res, flag_list *flags)
+int		ft_string(va_list args, char **res, flag_list *flags)
 {
 	char 			*s;
 	char			*tmp;
 	char			*tmp2;
 	unsigned int	length;
 	unsigned int	width;
-	
+
 	width = 0;
 	length = 0;
-	if(flags->b_flag_zero == 1)
-		return ; //erreur	
+	if (flags->b_flag_zero == 1)
+		return (-1); //erreur	
 	if (flags->v_width > 0 || flags->b_star_width == 1)
 		width = ft_width(flags, args); // cas 0 a gerer? 
 	if (flags->b_precision == 1)
@@ -76,10 +76,7 @@ void	ft_string(va_list args, char **res, flag_list *flags)
 	if (flags->v_width == 0)
 		width = length;
 	if (!(tmp = malloc(sizeof(char) * (width + 1))))
-	{
-		free(*res);
-		return; //erreur
-	}
+		return (-1); //erreur >> -1?
 	if (flags->b_flag_minus == 1)
 		ft_string_left(s, tmp, width, length);
 	else
@@ -89,5 +86,5 @@ void	ft_string(va_list args, char **res, flag_list *flags)
 	free(tmp);
 	*res = ft_strdup(tmp2);
 	free(tmp2);
-	//write(1, s, ft_strlen(s));
+	return (1);
 }

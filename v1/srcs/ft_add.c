@@ -6,12 +6,11 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 15:06:22 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 20:52:46 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
-#include <stdio.h>
 
 static void	ft_add_right(char *tmp, char *tmp1, unsigned int width)
 {
@@ -52,7 +51,7 @@ static void	ft_add_left(char *tmp, char *tmp1, unsigned int width)
 
 }
 
-void	ft_p(va_list args, char **res, flag_list *flags)
+int		ft_p(va_list args, char **res, flag_list *flags)
 {
 	void			*ptr;
 	char			*tmp;
@@ -62,7 +61,7 @@ void	ft_p(va_list args, char **res, flag_list *flags)
 
 	width = 0;
 	if(flags->b_flag_zero == 1 || flags->b_precision == 1)
-		return;
+		return (-1);
 	if(flags->v_width > 0 || flags->b_star_width == 1)
 		width = ft_width(flags, args);
 	ptr = va_arg(args, void*);
@@ -70,7 +69,10 @@ void	ft_p(va_list args, char **res, flag_list *flags)
 	if (width < ft_strlen(tmp))
 		width = ft_strlen(tmp);
 	if (!(tmp1 = malloc(sizeof(char) * (width + 1))))
-		return;
+	{
+		free(tmp);
+		return (-1);
+	}
 	if (flags->b_flag_minus == 0)
 		ft_add_right(tmp, tmp1, width);
 	else
@@ -78,5 +80,8 @@ void	ft_p(va_list args, char **res, flag_list *flags)
 	tmp2 = ft_strjoin_printf(*res, tmp1);
 	free(*res);
 	*res = ft_strdup(tmp2);
+	free(tmp);
+	free(tmp1);
+	free(tmp2);
+	return (1);
 }
-	//ft_putnbr_fd(d, 1);

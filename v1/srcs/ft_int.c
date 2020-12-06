@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 12:06:09 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 20:43:33 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void ft_int_right(char *s, char *tmp, unsigned int width, char c)
 	}
 }
 
-void	ft_unsint(va_list args, char **res, flag_list *flags)
+int		ft_unsint(va_list args, char **res, flag_list *flags)
 {
 	unsigned int	d;
 	char			*tmp;
@@ -87,8 +87,8 @@ void	ft_unsint(va_list args, char **res, flag_list *flags)
 	}
 	if (!(tmp1 = malloc(sizeof(char) * (width + 1))))
 	{
-		free(*res);
-		return; //erreur
+		free(tmp);
+		return (-1); //erreur
 	}
 	if (flags->b_flag_minus == 1 && flags->v_width != 0)
 		ft_int_left(tmp, tmp1, width);
@@ -102,12 +102,14 @@ void	ft_unsint(va_list args, char **res, flag_list *flags)
 	//ft_putnbr_fd(d, 1);
 	tmp2 = ft_strjoin_printf(*res, tmp1);
 	free(*res);
-	free(tmp);
-	//free(tmp1);
 	*res = ft_strdup(tmp2);
+	free(tmp2);
+	free(tmp1);
+	free(tmp);
+	return (1);
 }
 
-void	ft_int(va_list args, char **res, flag_list *flags)
+int		ft_int(va_list args, char **res, flag_list *flags)
 {
 	int				d;
 	char			*tmp;
@@ -138,8 +140,8 @@ void	ft_int(va_list args, char **res, flag_list *flags)
 	}
 	if (!(tmp1 = malloc(sizeof(char) * (width + 1))))
 	{
-		free(*res);
-		return; //erreur
+		free(tmp);
+		return (-1); //erreur
 	}
 	if (flags->b_flag_minus == 1 && flags->v_width != 0)
 		ft_int_left(tmp, tmp1, width);
@@ -153,8 +155,10 @@ void	ft_int(va_list args, char **res, flag_list *flags)
 	//ft_putnbr_fd(d, 1);
 	tmp2 = ft_strjoin_printf(*res, tmp1);
 	free(*res);
+	*res = ft_strdup(tmp2);	
+	free(tmp2);
+	free(tmp1);
 	free(tmp);
-	//free(tmp1);
-	*res = ft_strdup(tmp2);
+	return (1);
 }
 

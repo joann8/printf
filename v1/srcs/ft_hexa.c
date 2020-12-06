@@ -6,14 +6,14 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 12:13:20 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 20:49:08 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 #include <stdio.h>
 
-void	ft_x(va_list args, char **res, flag_list *flags)
+int		ft_x(va_list args, char **res, flag_list *flags)
 {
 	unsigned int	d;
 	char			*tmp;
@@ -41,8 +41,8 @@ void	ft_x(va_list args, char **res, flag_list *flags)
 	}
 	if (!(tmp1 = malloc(sizeof(char) * (width + 1))))
 	{
-		free(*res);
-		return; //erreur
+		free(tmp);
+		return (-1); //erreur
 	}
 	if (flags->b_flag_minus == 1 && flags->v_width != 0)
 		ft_int_left(tmp, tmp1, width);
@@ -57,9 +57,13 @@ void	ft_x(va_list args, char **res, flag_list *flags)
 	tmp2 = ft_strjoin_printf(*res, tmp1);
 	free(*res);
 	*res = ft_strdup(tmp2);
+	free(tmp1);
+	free(tmp2);
+	free(tmp);
+	return (1);
 }
 
-void	ft_X(va_list args, char **res, flag_list *flags)
+int		ft_X(va_list args, char **res, flag_list *flags)
 {
 	unsigned int	d;
 	char			*tmp;
@@ -87,8 +91,8 @@ void	ft_X(va_list args, char **res, flag_list *flags)
 	}
 	if (!(tmp1 = malloc(sizeof(char) * (width + 1))))
 	{
-		free(*res);
-		return; //erreur
+		free(tmp);
+		return (-1); //erreur
 	}
 	if (flags->b_flag_minus == 1 && flags->v_width != 0)
 		ft_int_left(tmp, tmp1, width);
@@ -103,4 +107,8 @@ void	ft_X(va_list args, char **res, flag_list *flags)
 	tmp2 = ft_strjoin_printf(*res, tmp1);
 	free(*res);
 	*res = ft_strdup(tmp2);
+	free(tmp1);
+	free(tmp2);
+	free(tmp);
+	return (1);
 }

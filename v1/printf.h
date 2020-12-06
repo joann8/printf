@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 17:43:14 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 20:48:31 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,21 @@ typedef struct f_list
 typedef struct a_list
 {
 	char c_init;
-	void (*f)(va_list, char **, flag_list*);
+	int (*f)(va_list, char **, flag_list*);
 }				arg_list;
 
 arg_list		*struct_init(void);
+
 int				ft_printf(const char *input, ...);
-void			ft_percent(va_list args, char **res, flag_list *flags);
-void			ft_char(va_list args, char **res, flag_list *flags);
-void			ft_int(va_list args, char **res, flag_list *flags);
-void			ft_unsint(va_list args, char **res, flag_list *flags);
-void			ft_x(va_list args, char **res, flag_list *flags);
-void			ft_X(va_list args, char **res, flag_list *flags);
-void			ft_p(va_list args, char **res, flag_list *flags);
-void			ft_string(va_list args, char **res, flag_list *flags);
+int				ft_percent(va_list args, char **res, flag_list *flags);
+int				ft_char(va_list args, char **res, flag_list *flags);
+int				ft_int(va_list args, char **res, flag_list *flags);
+int				ft_unsint(va_list args, char **res, flag_list *flags);
+int				ft_x(va_list args, char **res, flag_list *flags);
+int				ft_X(va_list args, char **res, flag_list *flags);
+int				ft_p(va_list args, char **res, flag_list *flags);
+int				ft_string(va_list args, char **res, flag_list *flags);
+
 char			*ft_itoa_int(int n);
 char			*ft_itoa_unsint(unsigned int n);
 char			*ft_itoa_x(unsigned int n, char letter);

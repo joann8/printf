@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 18:24:42 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 20:55:52 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,20 @@ int	str_analysis(char **str, char **res, va_list args, arg_list *list)
 		tmp2 = ft_strjoin_printf(*res, tmp1);
 		free(*res);
 		*res = ft_strdup(tmp2);
+		free(tmp1);
+		free(tmp2);
 		if (*res == NULL)
 		{
 			ft_free(*res, list, *str);
 			va_end(args);
 			return(-1);
 		}
-		free(tmp1);
-		free(tmp2);
 		j = 0;
 		while (list[j].c_init)
 		{
 			if ((*str)[i + plus] == list[j].c_init)
 			{		
-				list[j].f(args, res, &flags);
-				if (*res == NULL)
+				if ((list[j].f(args, res, &flags)) == -1 || *res == NULL)
 				{
 					ft_free(*res, list, *str);
 					va_end(args);
@@ -84,7 +83,7 @@ int ft_printf(const char *input, ...)
 	
 	if ((str_analysis(&str, &res, args, list) == -1))
 		return (-1);
-	
+
 	va_end(args);
 	result = ft_strlen(res);
 	ft_putstr_fd(res, 1);
