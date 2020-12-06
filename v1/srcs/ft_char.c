@@ -6,23 +6,28 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 15:14:53 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/06 15:20:33 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 #include <stdio.h>
 
-static void	ft_char_right(char car, char *c, unsigned int width)
+static void	ft_char_right(char car, char *c, unsigned int width, int mod)
 {
 	unsigned int i;
+	char		 fill;
 
+	if (mod == 1)
+		fill = ' ';
+	else
+		fill = '0';
 	i = 0;
 	c[width] = '\0';
 	c[width - 1] = car;
 	while (i < width - 1)
 	{	
-		c[i] = ' ';
+		c[i] = fill;
 		i++;
 	}
 }
@@ -62,7 +67,7 @@ void	ft_char(va_list args, char **res, flag_list *flags)
 	}
 	car = (char)va_arg(args, int);
 	if (flags->b_flag_minus == 0)
-		ft_char_right(car, c, width);	
+		ft_char_right(car, c, width, 1);	
 	else
 		ft_char_left(car, c, width);	
 	tmp = ft_strjoin_printf(*res, c);
@@ -81,7 +86,7 @@ void	ft_percent(va_list args, char **res, flag_list *flags)
 	
 	(void)args;
 	width = 1;
-	if(flags->b_flag_zero == 1 || flags->b_precision == 1)
+	if(flags->b_precision == 1)
 		return ; //erreur
 	if (flags->v_width > 1 || flags->b_star_width == 1)
 		width = ft_width(flags, args);
@@ -94,7 +99,12 @@ void	ft_percent(va_list args, char **res, flag_list *flags)
 	}
 	car = '%';
 	if (flags->b_flag_minus == 0)
-		ft_char_right(car, c, width);	
+	{
+		if (flags->b_flag_zero == 1)
+			ft_char_right(car, c, width, 0);
+		else
+			ft_char_right(car, c, width, 1);
+	}	
 	else
 		ft_char_left(car, c, width);	
 	tmp = ft_strjoin_printf(*res, c);
