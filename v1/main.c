@@ -7,16 +7,32 @@ int main()
 	char 			*s1;
 	char 			*s2;
 	char			c1;
-	char c2;
-	
+	char 			c2;
+	void			*ptr;
+	void			*ptr2;
+
 	u = 29;
 	s1 = "deux";
+	ptr = &u;
 	s2 = "quatre\n";
 	c1 = 'd';
 	c2 = 'j';
+	ptr2 = &c1;
 
+// TEST ADD
+	printf("\n\npf | un %-25p deux %p trois \n", ptr, ptr2);	
+	ft_printf("my | un %-25p deux %p trois \n", ptr, ptr2);	
+	/*printf("\n\npf | un %0p deux %-5p trois \n", ptr, ptr2);	
+	ft_printf("my | un %0p deux %-5p trois \n", ptr, ptr2);	
+	printf("\n\npf | un %0p deux %05p trois \n",  ptr, ptr2);	
+	ft_printf("my | un %0p deux %05p trois \n", ptr, ptr2);	
+	printf("\n\npf | un %p deux %-.5p trois \n",  ptr, ptr2);	
+	ft_printf("my | un %p deux %-.5p trois \n",  ptr, ptr2);	
+	printf("\n\npf | un %010p deux %-.8p trois \n",  ptr, ptr2);	
+	ft_printf("my | un %010p deux %-.8p trois \n", ptr, ptr2);	*/
+	
 // TEST HEXA
-	printf("\n\npf | un %x deux %X trois %X\n", 11, 222, 333);	
+/*	printf("\n\npf | un %x deux %X trois %X\n", 11, 222, 333);	
 	ft_printf("my | un %x deux %X trois %X\n", 11, 222, 333);	
 	printf("\n\npf | un %0x deux %-5X trois %05x\n", 11, -222, 333);	
 	ft_printf("my | un %0x deux %-5X trois %05x\n", 11, -222, 333);	
@@ -26,7 +42,7 @@ int main()
 	ft_printf("my | un %x deux %-.5x trois %.5x\n", 11, -222, 333);	
 	printf("\n\npf | un %010x deux %-.8x trois %-8X.\n", 11, -222, 333);	
 	ft_printf("my | un %010x deux %-.8x trois %-8X.\n", 11, -222, 333);	
-	
+*/	
 /* TEST UNSIN 
 	printf("\n\npf | un %u deux %u trois %u\n", 11, 222, 333);	
 	ft_printf("my | un %u deux %u trois %u\n", 11, 222, 333);	
