@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 11:34:14 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 13:52:05 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int		ft_string(va_list args, char **res, flag_list *flags)
 	if (flags->b_flag_zero == 1)
 		return (-1); //erreur
 	s = va_arg(args, char *);
+	if (s == NULL)
+		return (-1);
 	width = ft_strlen(s);
 	if (flags->b_width == 1 && width < flags->v_width)
 		width = flags->v_width;
