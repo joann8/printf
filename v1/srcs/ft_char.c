@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 15:04:00 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 15:04:53 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		ft_char(va_list args, char **res, flag_list *flags)
 		return (-1); //erreur
 	car = (char)va_arg(args, int);
 	if (car == 0)
-		car = '';
+		car = ' ';
 	if (flags->b_flag_minus == 0)
 		ft_char_right(car, c, size, 1);	
 	else
