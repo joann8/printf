@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 15:04:53 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 15:19:35 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int		ft_char(va_list args, char **res, flag_list *flags)
 	if (!(c = malloc(sizeof(char) * (size + 1))))
 		return (-1); //erreur
 	car = (char)va_arg(args, int);
-	if (car == 0)
-		car = ' ';
-	if (flags->b_flag_minus == 0)
+	if (car == '\0') // pas sure
+		ft_char_right(car, c, size, 1);	
+	else if (flags->b_flag_minus == 0)
 		ft_char_right(car, c, size, 1);	
 	else
 		ft_char_left(car, c, size);	
