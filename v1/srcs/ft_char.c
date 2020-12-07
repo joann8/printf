@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 15:35:22 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 15:37:41 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,15 @@ static void	ft_char_right(char car, char *c, unsigned int width, int mod)
 {
 	unsigned int i;
 	char		 fill;
-	unsigned int plus;
 
-	plus = 0;
 	if (mod == 1)
 		fill = ' ';
 	else
 		fill = '0';
 	i = 0;
-	c[width] = '\0';	
-	if (car == '\0')
-	{
-		c[width - 2] = '\\';
-		c[width - 1] = '0';
-		plus = 1;
-	}
-	else
-		c[width - 1] = car;
-	while (i < width - 1 - plus)
+	c[width] = '\0';
+	c[width - 1] = car;
+	while (i < width - 1)
 	{	
 		c[i] = fill;
 		i++;
@@ -46,14 +37,7 @@ static void	ft_char_left(char car, char *c, unsigned int width)
 
 	i = 0;
 	c[width] = '\0';
-	if (car == '\0')
-	{
-		c[0] = '\\';
-		c[1] = '0';
-		i++;
-	}
-	else
-		c[0] = car;
+	c[0] = car;
 	while (i + 1 < width)
 	{	
 		c[i + 1] = ' ';
@@ -75,13 +59,12 @@ int		ft_char(va_list args, char **res, flag_list *flags)
 		width = ft_width(flags, args);*/
 	if (flags->b_width == 1 && flags->v_width > 1)
 		size = flags->v_width;
-	car = (char)va_arg(args, int);
-	if (car == '\0') // pas sure
-		size++;
 	if (!(c = malloc(sizeof(char) * (size + 1))))
 		return (-1); //erreur
-	//	ft_char_right(car, c, size, 1);	
-	if (flags->b_flag_minus == 0)
+	car = (char)va_arg(args, int);
+	if (car == '\0') // pas sure
+		ft_char_right(car, c, size, 1);	
+	else if (flags->b_flag_minus == 0)
 		ft_char_right(car, c, size, 1);	
 	else
 		ft_char_left(car, c, size);	
