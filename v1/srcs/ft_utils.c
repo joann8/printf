@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 17:43:37 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 11:11:40 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void 	flag_init(flag_list *flags)
 {
 	flags->b_flag_zero = 0;
 	flags->b_flag_minus = 0;
+	flags->b_width = 0;
 	flags->v_width = 0;
 	flags->b_precision = 0;
 	flags->v_length = 0;

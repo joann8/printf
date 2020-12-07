@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 20:52:57 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 11:23:49 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,22 @@ int		ft_char(va_list args, char **res, flag_list *flags)
 	char			car;
 	char 			*c;
 	char 			*tmp;
-	unsigned int	width;
+	unsigned int	size;
 
-	width = 1;
+	size = 1;
 	if(flags->b_flag_zero == 1 || flags->b_precision == 1)
 		return (-1); //erreur
-	if (flags->v_width > 1 || flags->b_star_width == 1)
-		width = ft_width(flags, args);
-	if (width == 0)
-		width = 1; //erreur? pas sure
-	if (!(c = malloc(sizeof(char) * (width + 1))))
+	/*if (flags->v_width > 1 || flags->b_star_width == 1)
+		width = ft_width(flags, args);*/
+	if (flags->b_width == 1 && flags->v_width > 1)
+		size = flags->v_width;
+	if (!(c = malloc(sizeof(char) * (size + 1))))
 		return (-1); //erreur
 	car = (char)va_arg(args, int);
 	if (flags->b_flag_minus == 0)
-		ft_char_right(car, c, width, 1);	
+		ft_char_right(car, c, size, 1);	
 	else
-		ft_char_left(car, c, width);	
+		ft_char_left(car, c, size);	
 	tmp = ft_strjoin_printf(*res, c);
 	free(*res);
 	*res = ft_strdup(tmp);
@@ -79,28 +79,28 @@ int		ft_percent(va_list args, char **res, flag_list *flags)
 	char			car;
 	char			*c;
 	char			*tmp;
-	unsigned int	width;
+	unsigned int	size;
 	
 	(void)args;
-	width = 1;
+	size = 1;
 	if(flags->b_precision == 1)
 		return (-1); //erreur
-	if (flags->v_width > 1 || flags->b_star_width == 1)
-		width = ft_width(flags, args);
-	if (width == 0)
-		width = 1; //erreur? pas sure
-	if (!(c = malloc(sizeof(char) * (width + 1))))
+	/*if (flags->v_width > 1 || flags->b_star_width == 1)
+		width = ft_width(flags, args);*/
+	if (flags->b_width == 1 && flags->v_width > 1)
+		size = flags->v_width;
+	if (!(c = malloc(sizeof(char) * (size + 1))))
 		return (-1); //erreur
 	car = '%';
 	if (flags->b_flag_minus == 0)
 	{
 		if (flags->b_flag_zero == 1)
-			ft_char_right(car, c, width, 0);
+			ft_char_right(car, c, size, 0);
 		else
-			ft_char_right(car, c, width, 1);
+			ft_char_right(car, c, size, 1);
 	}	
 	else
-		ft_char_left(car, c, width);	
+		ft_char_left(car, c, size);	
 	tmp = ft_strjoin_printf(*res, c);
 	free(*res);
 	*res = ft_strdup(tmp);

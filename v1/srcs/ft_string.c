@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 20:41:21 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 11:34:14 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,25 @@ int		ft_string(va_list args, char **res, flag_list *flags)
 	unsigned int	length;
 	unsigned int	width;
 
-	width = 0;
-	length = 0;
 	if (flags->b_flag_zero == 1)
-		return (-1); //erreur	
-	if (flags->v_width > 0 || flags->b_star_width == 1)
+		return (-1); //erreur
+	s = va_arg(args, char *);
+	width = ft_strlen(s);
+	if (flags->b_width == 1 && width < flags->v_width)
+		width = flags->v_width;
+	length = ft_strlen(s);
+	if (flags->b_precision == 1)
+		length = flags->v_length;
+	/*if (flags->v_width > 0 || flags->b_star_width == 1)
 		width = ft_width(flags, args); // cas 0 a gerer? 
 	if (flags->b_precision == 1)
-		length = ft_length(flags, args);
-	s = va_arg(args, char *);
-	if (width < ft_strlen(s))
+		length = ft_length(flags, args);*/
+	/*if (width < ft_strlen(s))
 		width = ft_strlen(s);
-	if (length > ft_strlen(s) || flags->b_precision == 0)
+	if (flags->b_precision == 0)
 		length = ft_strlen(s);
 	if (flags->v_width == 0)
-		width = length;
+		width = length;*/
 	if (!(tmp = malloc(sizeof(char) * (width + 1))))
 		return (-1); //erreur >> -1?
 	if (flags->b_flag_minus == 1)

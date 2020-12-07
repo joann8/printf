@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 20:48:31 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 12:10:22 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ typedef struct f_list
 {
 	int				b_flag_minus;
 	int				b_flag_zero;
+	int				b_width;
 	unsigned int	v_width;
+	int				b_star_width;
 	int				b_precision;
 	unsigned int	v_length;
 	int				b_star_length;
-	int				b_star_width;
 }				flag_list;
 
 typedef struct a_list
@@ -60,12 +61,13 @@ void	 		ft_putstr_fd(char *s, int fd);
 size_t			ft_strlen(const char *str);
 unsigned int	ft_atoi_printf(const char *str, unsigned int *pos);
 void			print_flags(flag_list flags);
-unsigned int	ft_width(flag_list *flags, va_list args);
-unsigned int	ft_length(flag_list *flags, va_list args);
+void			ft_width(flag_list *flags, va_list args);
+void			ft_length(flag_list *flags, va_list args);
 void			flag_parsing_help(flag_list *flags, char *str, unsigned int *index);
-int				flag_parsing(flag_list *flags, char *str, unsigned int *pos);
+int				flag_parsing(flag_list *flags, char *str, unsigned int *pos, va_list args);
 void			ft_int_left(char *s, char *tmp, unsigned int width);
-void			ft_int_right(char *s, char *tmp, unsigned int width, char c);
+void			ft_int_right(char *s, char *tmp, unsigned int width);
+void			ft_int_right_0(char *s, char *tmp, unsigned int width, unsigned int length);
 void			ft_free(char *res, arg_list *list, char *str);
 int				is_a_type(char c);
 void			flag_init(flag_list *flags);

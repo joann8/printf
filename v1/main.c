@@ -59,8 +59,8 @@ int main()
 //* TEST INT
 	printf("\n\npf | un %d deux %d trois %d\n", 11, -222, 333);	
 	ft_printf("my | un %d deux %d trois %d\n", 11, -222, 333);	
-	printf("\n\npf | un %0d deux %-5d trois %05d\n", 11, -222, 333);	
-	ft_printf("my | un %0d deux %-5d trois %05d\n", 11, -222, 333);	
+	printf("\n\npf | un %7i deux %07i trois %-7i %010.5i\n", -14, -14, -14, -14);	
+	ft_printf("my | un %7i deux %07i trois %-7i %010.5i\n", -14, -14, -14, -14);	
 	printf("\n\npf | un %0d deux %05d trois %05d\n", 11, -222, 333);	
 	ft_printf("my | un %0d deux %05d trois %05d\n", 11, -222, 333);	
 	printf("\n\npf | un %d deux %-.5d trois %.5d\n", 11, -222, 333);	
@@ -76,12 +76,12 @@ int main()
 
 
 
- // TEST 
+ /*/ TEST 
 	printf("\n***original %%***\nabc%%efghi%% \n\n");	
 
 	printf("\npf | abc%%cefghi%%c\n");	
 	ft_printf("my | abc%%cefghi%%c");	
-
+*/
 // TEST STRING
 	printf("\n***original string***\nun %%s trois %%s cinq avec s1=deux et s2=quatre\n\n");	
 

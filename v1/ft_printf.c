@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 20:55:52 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 11:06:01 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	str_analysis(char **str, char **res, va_list args, arg_list *list)
 		while ((*str)[i] != '%' && (*str)[i])
 			i++;
 		if ((*str)[i])
-			if (flag_parsing(&flags, *str + i + 1, &plus) == 0)
+			if (flag_parsing(&flags, *str + i + 1, &plus, args) == 0)
 				return (-1);
 		tmp1 = ft_strdup_pf(*str, j, i);
 		tmp2 = ft_strjoin_printf(*res, tmp1);
@@ -51,7 +51,7 @@ int	str_analysis(char **str, char **res, va_list args, arg_list *list)
 		{
 			if ((*str)[i + plus] == list[j].c_init)
 			{		
-				if ((list[j].f(args, res, &flags)) == -1 || *res == NULL)
+				if (((list[j].f(args, res, &flags)) == -1) || *res == NULL)
 				{
 					ft_free(*res, list, *str);
 					va_end(args);
