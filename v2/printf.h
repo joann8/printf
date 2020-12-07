@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 16:34:57 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 16:50:05 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@ typedef struct f_list
 typedef struct a_list
 {
 	char c_init;
-	int (*f)(va_list, char **, flag_list*);
+	int (*f)(va_list, int *, flag_list*);
 }				arg_list;
 
 arg_list		*struct_init(void);
 
 int				ft_printf(const char *input, ...);
-int				ft_percent(va_list args, char **res, flag_list *flags);
-int				ft_char(va_list args, char **res, flag_list *flags);
-int				ft_int(va_list args, char **res, flag_list *flags);
-int				ft_unsint(va_list args, char **res, flag_list *flags);
-int				ft_x(va_list args, char **res, flag_list *flags);
-int				ft_X(va_list args, char **res, flag_list *flags);
-int				ft_p(va_list args, char **res, flag_list *flags);
-int				ft_string(va_list args, char **res, flag_list *flags);
+int				ft_percent(va_list args, int *res, flag_list *flags);
+int				ft_char(va_list args, int *res, flag_list *flags);
+int				ft_int(va_list args, int *res, flag_list *flags);
+int				ft_unsint(va_list args, int *res, flag_list *flags);
+int				ft_x(va_list args, int *res, flag_list *flags);
+int				ft_X(va_list args, int *res, flag_list *flags);
+int				ft_p(va_list args, int *res, flag_list *flags);
+int				ft_string(va_list args, int *res, flag_list *flags);
 
 char			*ft_itoa_int(int n);
 char			*ft_itoa_unsint(unsigned int n);
@@ -68,7 +68,7 @@ int				flag_parsing(flag_list *flags, char *str, unsigned int *pos, va_list args
 void			ft_int_left(char *s, char *tmp, unsigned int width);
 void			ft_int_right(char *s, char *tmp, unsigned int width);
 void			ft_int_right_0(char *s, char *tmp, unsigned int width, unsigned int length);
-void			ft_free(char *res, arg_list *list, char *str);
+void			ft_free(arg_list *list, char *str);
 int				is_a_type(char c);
 void			flag_init(flag_list *flags);
 

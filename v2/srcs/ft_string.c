@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 16:39:42 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 17:01:54 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,15 @@ static void		ft_string_right(char *s, char *tmp, unsigned int width,
 	}
 }
 
-int		ft_string(va_list args, char **res, flag_list *flags)
+int		ft_string(va_list args, int *res, flag_list *flags)
 {
 	char 			*s;
 	char			*tmp;
-	//char			*tmp2;
 	unsigned int	length;
 	unsigned int	width;
 
-	(void)res;
 	if (flags->b_flag_zero == 1)
-		return (-1); //erreur
+		return ((*res = -1)); //erreur
 	s = va_arg(args, char *);
 	if (s == NULL)
 		s = ft_strdup("(null)");
@@ -76,27 +74,14 @@ int		ft_string(va_list args, char **res, flag_list *flags)
 		if (flags->b_width == 0)
 			width = length;
 	}
-	/*if (flags->v_width > 0 || flags->b_star_width == 1)
-		width = ft_width(flags, args); // cas 0 a gerer? 
-	if (flags->b_precision == 1)
-		length = ft_length(flags, args);*/
-	/*if (width < ft_strlen(s))
-		width = ft_strlen(s);
-	if (flags->b_precision == 0)
-		length = ft_strlen(s);
-	if (flags->v_width == 0)
-		width = length;*/
 	if (!(tmp = malloc(sizeof(char) * (width + 1))))
-		return (-1); //erreur >> -1?
+		return ((*res = 1)); //erreur >> -1?
 	if (flags->b_flag_minus == 1)
 		ft_string_left(s, tmp, width, length);
 	else
 		ft_string_right(s, tmp, width, length);
-	ft_putstr(tmp);/*
-	tmp2 = ft_strjoin_printf(*res, tmp);
-	free(*res);*/
+	ft_putstr(tmp);
+	*res = ft_strlen(tmp);
 	free(tmp);
-	//*res = ft_strdup(tmp2);
-	//free(tmp2);
 	return (1);
 }

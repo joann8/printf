@@ -6,16 +6,14 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 11:11:40 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 16:48:29 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 
-void ft_free(char *res, arg_list *list, char *str)
+void ft_free(arg_list *list, char *str)
 {
-	if (res)
-		free(res);
 	if (str)
 		free(str);
 	if (list)
