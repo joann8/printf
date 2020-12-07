@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 17:38:24 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 18:30:37 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ static void		ft_string_right(char *s, char *tmp, unsigned int width,
 	{
 		tmp[i] = ' ';
 		i++;
+	}	
+	while (i + ft_strlen(s) < width)
+	{
+		tmp[i] = ' ';
+		i++;
 	}
 	j = 0;
 	while (s[j] && j < length)
@@ -58,7 +63,8 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 	char			*tmp;
 	unsigned int	length;
 	unsigned int	width;
-
+	
+	//print_flags(*flags);
 	if (flags->b_flag_zero == 1)
 		return ((*res = -1)); 
 	s = va_arg(args, char *);
@@ -70,11 +76,11 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 	length = ft_strlen(s);
 	if (flags->b_precision == 1)
 	{
-		if (flags->v_length < length)
-			length = flags->v_length;
-		if (flags->b_width == 0)
+		length = flags->v_length;
+		if (length < width && length <= ft_strlen(s))
 			width = length;
 	}
+//	printf("\n*****width =%u | length = %d\n", width, length);
 	if (!(tmp = malloc(sizeof(char) * (width + 1))))
 		return ((*res = 1)); //erreur >> -1?
 	if (flags->b_flag_minus == 1)
