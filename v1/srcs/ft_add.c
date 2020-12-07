@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 13:42:36 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 14:56:58 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		ft_p(va_list args, char **res, flag_list *flags)
 	char			*tmp2;
 	unsigned int	width;
 
-	if(flags->b_flag_zero == 1 || flags->b_precision == 1)
+	if(flags->b_flag_zero == 1)
 		return (-1);
 /*	if(flags->v_width > 0 || flags->b_star_width == 1)
 		width = ft_width(flags, args);*/
