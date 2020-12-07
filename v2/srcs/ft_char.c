@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 17:00:38 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 17:11:27 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,35 @@ int		ft_char(va_list args, int *res, flag_list *flags)
 	}
 	if (flags->b_width == 1 && flags->v_width > 1)
 		size = flags->v_width;
-	if (!(c = malloc(sizeof(char) * (size + 1))))
-	{
-		*res = -1;
-		return (-1); //erreur
-	}
 	car = (char)va_arg(args, int);
-	if (car == '\0') // pas sure
-		ft_char_right(car, c, size, 1);	
-	else if (flags->b_flag_minus == 0)
-		ft_char_right(car, c, size, 1);	
+	if (car == '\0')
+		size--;
+	if (!(c = malloc(sizeof(char) * (size + 1))))
+		return ((*res = -1)); //erreur
+	if (flags->b_flag_minus == 0)
+	{
+		if (car == '\0')
+		{		
+			ft_char_right(' ', c, size, 1);
+			write(1, "\0", 1);
+		}
+		else
+			ft_char_right(car, c, size, 1);	
+	}
 	else
-		ft_char_left(car, c, size);	
+	{
+		if (car == '\0')
+		{		
+			write(1, "\0", 1);
+			ft_char_right(' ', c, size, 1);
+		}
+		else
+			ft_char_left(car, c, size);
+	}
 	ft_putstr(c);
 	*res += ft_strlen(c);
+	if (car == '\0')
+		*res += 1;
 	free(c);
 	return (1);
 }
