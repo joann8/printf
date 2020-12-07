@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 17:24:29 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/07 17:26:01 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		ft_char(va_list args, int *res, flag_list *flags)
 	unsigned int	size;
 	
 	size = 1;
+	c = NULL;
 	if(flags->b_flag_zero == 1 || flags->b_precision == 1)
 		return ((*res = -1)); //erreur
 	if (flags->b_width == 1 && flags->v_width > 1)
@@ -69,14 +70,16 @@ int		ft_char(va_list args, int *res, flag_list *flags)
 		ft_char_left(car, c, size);
 	if (car == '\0' && flags->b_flag_minus == 1)
 		write(1, "\0", 1);
-	if (size != 0)	
+	if (size != 0)
+	{
 		ft_putstr(c);
+		*res += ft_strlen(c);
+		free(c);
+	}
 	if (car == '\0' && flags->b_flag_minus == 0)
 		write(1, "\0", 1);
-	*res += ft_strlen(c);
 	if (car == '\0')
 		*res += 1;
-	free(c);
 	return (1);
 }
 
