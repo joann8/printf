@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 12:39:02 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 18:52:03 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_width(flag_list *flags, va_list args)
 
 void	ft_length(flag_list *flags, va_list args)
 {
-	unsigned int	s_tmp;
+	int	s_tmp;
 	unsigned int	length;
 	
 	length = 0;
@@ -50,7 +50,9 @@ void	ft_length(flag_list *flags, va_list args)
 			//flags->b_flag_minus = 1;
 		}
 		else
+		{
 			length = s_tmp;
+		}
 		flags->v_length = length;
 	}
 //	else if (flags->v_length > 0)
