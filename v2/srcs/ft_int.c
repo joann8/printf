@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 18:13:34 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 18:16:13 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 	unsigned int	size;
 	
 	d = va_arg(args, unsigned int);
-	if (flags->b_precision == 1 && flags->v_length == 0)
+	if (d == 0 && flags->b_precision == 1 && flags->v_length == 0)
 		tmp ="";
 	else
 		tmp = ft_itoa_unsint(d);
@@ -212,7 +212,7 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 	unsigned int	size;
 
 	d = va_arg(args, int);
-	if (flags->b_precision == 1 && flags->v_length == 0)
+	if (d == 0 && flags->b_precision == 1 && flags->v_length == 0)
 		tmp ="";
 	else
 		tmp = ft_itoa_unsint(d);
