@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 11:41:02 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 18:56:21 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 	if (flags->b_width == 1)
 		width = flags->v_width;
 	length = ft_strlen(s);
-	if (flags->b_precision == 1)
+	if (flags->b_precision == 1 && s != NULL)
 	{
 		length = flags->v_length;
 		if (length > ft_strlen(s))
