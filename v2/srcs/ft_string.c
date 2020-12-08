@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 18:55:48 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 11:41:02 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,21 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 	if (s == NULL)
 		s = ft_strdup("(null)");
 	width = ft_strlen(s);
-	if (flags->b_width == 1 && width < flags->v_width)
+	if (flags->b_width == 1)
 		width = flags->v_width;
 	length = ft_strlen(s);
 	if (flags->b_precision == 1)
 	{
 		length = flags->v_length;
-		if (length > ft_strlen(s) && width < ft_strlen(s))
-			width = ft_strlen(s);
-		if (length < ft_strlen(s) && flags->v_width < ft_strlen(s))
-			width = length;
-		else if (length < ft_strlen(s))
-			width = flags->v_width;
-		
+		if (length > ft_strlen(s))
+		{
+			if (width < ft_strlen(s))
+				width = ft_strlen(s);
+		}
+		if (length < ft_strlen(s))
+			if (flags->b_width == 0)
+				width = length;
+				
 	}
 //	printf("\n*****width =%u | length = %d\n", width, length);
 	if (!(tmp = malloc(sizeof(char) * (width + 1))))
