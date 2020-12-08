@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 19:00:10 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 19:07:18 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 	if (s == NULL)
 	{
 		s = ft_strdup("(null)");
-		if (flags->b_width == 0)
+		if (flags->b_width == 0 && flags->b_star_width == 1)
 			flags->b_precision = 0;
 	}
 	width = ft_strlen(s);
