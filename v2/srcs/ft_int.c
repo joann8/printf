@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 18:25:25 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 18:28:52 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_int_left_np(char *s, char *tmp, unsigned int width, unsigned int length)
 
 	(void)length;
 	i = 0;
-	while (s[i] && s[0] != '0' && (i < width))
+	while (s[i] && (i < width))
 	{
 		tmp[i] = s[i];
 		i++;
@@ -52,7 +52,7 @@ void ft_int_left(char *s, char *tmp, unsigned int width, unsigned int length)
 		i++;
 	}
 	j = 0;
-	while (s[j + dif] && s[0] != '0' && j < ft_strlen(s))
+	while (s[j + dif] && j < ft_strlen(s))
 	{
 		tmp[i] = s[j + dif];
 		i++;
@@ -93,7 +93,7 @@ void ft_int_right(char *s, char *tmp, unsigned int width, unsigned int length)
 		j++;
 	}
 	j = 0;	
-	while (s[j + dif] && s[0] != '0' && (i < length || i < width ))
+	while (s[j + dif] && (i < length || i < width ))
 	{	
 		tmp[i] = s[j + dif];
 		i++;
@@ -124,7 +124,7 @@ void ft_int_right_0(char *s, char *tmp, unsigned int width, unsigned int length)
 		j++;
 	}
 	j = 0;	
-	while (s[j + dif] &&  s[0] != '0' && (i < length || i < width ))
+	while (s[j + dif] && (i < length || i < width ))
 	{	
 		tmp[i] = s[j + dif];
 		i++;
