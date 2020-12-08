@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 17:57:28 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 18:02:16 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,12 +141,8 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 	unsigned int	width;
 	unsigned int	length;
 	unsigned int	size;
-
 	d = va_arg(args, unsigned int);
-	if (d == 0)
-		tmp = "";
-	else
-		tmp = ft_itoa_unsint(d);
+	tmp = ft_itoa_unsint(d);
 	width = ft_strlen(tmp);
 	length = ft_strlen(tmp);
 	if (flags->b_width == 1 && width < flags->v_width)
@@ -212,10 +208,7 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 	unsigned int	size;
 
 	d = va_arg(args, int);
-	if (d == 0)
-		tmp ="";
-	else
-		tmp = ft_itoa_int(d);
+	tmp = ft_itoa_int(d);
 	width = ft_strlen(tmp);
 	length = ft_strlen(tmp);	
 	if (flags->b_width == 1 && width < flags->v_width)

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:09:53 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/03 14:59:12 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 18:03:22 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char			*ft_itoa_int(int n)
 	tab[size] = '\0';
 	man_neg(n, &nbr, &size, 1);
 	if (nbr == 0)
-		tab[0] = '0';
+		tab[0] = '\0';
 	else
 	{
 		while (nbr > 0)
@@ -79,7 +79,7 @@ char			*ft_itoa_unsint(unsigned int n)
 		return (NULL);
 	tab[size] = '\0';
 	if (n == 0)
-		tab[0] = '0';
+		tab[0] = '\0';
 	else
 	{
 		while (n > 0)
