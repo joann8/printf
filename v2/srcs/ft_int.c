@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 18:21:23 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 18:25:25 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_int_left_np(char *s, char *tmp, unsigned int width, unsigned int length)
 
 	(void)length;
 	i = 0;
-	while (s[i] && (i < width))
+	while (s[i] && s[0] != '0' && (i < width))
 	{
 		tmp[i] = s[i];
 		i++;
@@ -52,7 +52,7 @@ void ft_int_left(char *s, char *tmp, unsigned int width, unsigned int length)
 		i++;
 	}
 	j = 0;
-	while (s[j + dif] && j < ft_strlen(s))
+	while (s[j + dif] && s[0] != '0' && j < ft_strlen(s))
 	{
 		tmp[i] = s[j + dif];
 		i++;
@@ -93,7 +93,7 @@ void ft_int_right(char *s, char *tmp, unsigned int width, unsigned int length)
 		j++;
 	}
 	j = 0;	
-	while (s[j + dif] && (i < length || i < width ))
+	while (s[j + dif] && s[0] != '0' && (i < length || i < width ))
 	{	
 		tmp[i] = s[j + dif];
 		i++;
@@ -124,7 +124,7 @@ void ft_int_right_0(char *s, char *tmp, unsigned int width, unsigned int length)
 		j++;
 	}
 	j = 0;	
-	while (s[j + dif] && (i < length || i < width ))
+	while (s[j + dif] &&  s[0] != '0' && (i < length || i < width ))
 	{	
 		tmp[i] = s[j + dif];
 		i++;
@@ -143,10 +143,7 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 	unsigned int	size;
 	
 	d = va_arg(args, unsigned int);
-	if (d == 0 && flags->b_precision == 1 && flags->v_length == 0)
-		tmp ="";
-	else
-		tmp = ft_itoa_unsint(d);
+	tmp = ft_itoa_unsint(d);
 	width = ft_strlen(tmp);
 	length = ft_strlen(tmp);
 	if (flags->b_width == 1 && width < flags->v_width)
@@ -212,10 +209,7 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 	unsigned int	size;
 
 	d = va_arg(args, int);
-	if (d == 0 && flags->b_precision == 1 && flags->v_length == 0)
-		tmp ="";
-	else
-		tmp = ft_itoa_int(d);
+	tmp = ft_itoa_int(d);
 	width = ft_strlen(tmp);
 	length = ft_strlen(tmp);	
 	if (flags->b_width == 1 && width < flags->v_width)
