@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 17:47:00 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 17:54:13 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,7 +232,7 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 	}
 	else
 		size = width;
-	if (flags->b_precision == 0)
+	if (flags->b_flag_zero == 1 && flags->b_precision == 0)
 		length = width;
 	if (!(tmp1 = malloc(sizeof(char) * (size + 1))))
 	{
