@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 16:50:05 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 15:04:18 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ char			*ft_strdup_pf(const char *s, unsigned int start, unsigned int stop);
 char 			*ft_strdup(const char *s);
 void	 		ft_putstr(char *s);
 size_t			ft_strlen(const char *str);
-unsigned int	ft_atoi_printf(const char *str, unsigned int *pos);
+unsigned int	ft_atoi_printf(const char *str, unsigned int *pos, flag_list *flags);
 void			print_flags(flag_list flags);
 void			ft_width(flag_list *flags, va_list args);
 void			ft_length(flag_list *flags, va_list args);
 void			flag_parsing_help(flag_list *flags, char *str, unsigned int *index);
 int				flag_parsing(flag_list *flags, char *str, unsigned int *pos, va_list args);
-void			ft_int_left(char *s, char *tmp, unsigned int width);
-void			ft_int_right(char *s, char *tmp, unsigned int width);
+void			ft_int_left(char *s, char *tmp, unsigned int width, unsigned int length);
+void			ft_int_right(char *s, char *tmp, unsigned int width, unsigned int length);
 void			ft_int_right_0(char *s, char *tmp, unsigned int width, unsigned int length);
 void			ft_free(arg_list *list, char *str);
 int				is_a_type(char c);
