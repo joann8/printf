@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:09:53 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 18:06:42 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 18:18:57 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ char			*ft_itoa_unsint(unsigned int n)
 	}
 	if (!(tab = malloc(sizeof(char) * (size + 1))))
 		return (NULL);
-	tab[size] = '0';
+	tab[size] = '\0';
 	if (n == 0)
-		tab[0] = '\0';
+		tab[0] = '0';
 	else
 	{
 		while (n > 0)
