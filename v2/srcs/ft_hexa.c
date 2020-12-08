@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 17:02:56 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 15:21:25 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ int		ft_x(va_list args, int *res, flag_list *flags)
 		return (-1); //erreur
 	}
 	if (flags->b_flag_minus == 1)
-		ft_int_left(tmp, tmp1, width);
+		ft_int_left(tmp, tmp1, width, length);
 	else
 	{
 		if (flags->b_flag_zero == 1)	
 			ft_int_right_0(tmp, tmp1, width, length);
 		else
-			ft_int_right(tmp, tmp1, width);
+			ft_int_right(tmp, tmp1, width, length);
 	}
 	ft_putstr(tmp1);
 	*res += ft_strlen(tmp1);
@@ -91,13 +91,13 @@ int		ft_X(va_list args, int *res, flag_list *flags)
 		return ((*res = -1)); //erreur
 	}
 	if (flags->b_flag_minus == 1)
-		ft_int_left(tmp, tmp1, width);
+		ft_int_left(tmp, tmp1, width, length);
 	else
 	{
 		if (flags->b_flag_zero == 1)	
 			ft_int_right_0(tmp, tmp1, width, length);
 		else
-			ft_int_right(tmp, tmp1, width);
+			ft_int_right(tmp, tmp1, width, length);
 	}
 	ft_putstr(tmp1);
 	res += ft_strlen(tmp1);

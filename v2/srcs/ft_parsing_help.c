@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 11:14:14 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/08 12:39:02 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	flag_parsing_help(flag_list *flags, char *str, unsigned int *index)
 		flags->b_star_width = 1;
 		i++;
 	}	
-	if (str[i] >= '0' && str[i] <= '9')
+	if ((str[i] >= '0' && str[i] <= '9') || str[i] ==  '-')
 	{
 		flags->b_width = 1;
-		flags->v_width = ft_atoi_printf(str + i, &i);
+		flags->v_width = ft_atoi_printf(str + i, &i, flags);
 	}
 	if (str[i] == '.')
 	{
@@ -85,8 +85,8 @@ void	flag_parsing_help(flag_list *flags, char *str, unsigned int *index)
 		flags->b_star_length = 1;
 		i++;
 	}	
-	if (str[i] >= '0' && str[i] <= '9')
-		flags->v_length = ft_atoi_printf(str + i, &i);
+	if ((str[i] >= '0' && str[i] <= '9') || str[i] ==  '-')
+		flags->v_length = ft_atoi_printf(str + i, &i, flags);
 	*index = i;
 }
 
