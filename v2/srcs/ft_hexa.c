@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 21:26:44 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 21:28:58 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int		ft_x(va_list args, int *res, flag_list *flags)
 	d = va_arg(args, unsigned int);
 	tmp = ft_itoa_x(d, 'x');
 	if (d == 0 && flags->b_precision == 1 && flags->v_length == 0)
-		if (manage_precision_0(flags, tmp) == 0) // a verifier
-			return( (*res = -1));
+		if (manage_precision_0(flags, tmp) == 1) // a verifier
+			return (1);
 /*			
 			
 		if (flags->b_width == 1)
