@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 17:34:48 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 17:37:42 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,18 @@ int		ft_percent(va_list args, int *res, flag_list *flags)
 	if (flags->b_width == 1 && flags->v_width > 1)
 		size = flags->v_width;
 	if (!(c = malloc(sizeof(char) * (size + 1))))
-	{
-		*res = -1;
-		return (-1); //erreur
-	}
+		return ((*res = -1));
 	car = '%';
-	display_char(car, size, flags, c);
+	if (flags->b_flag_minus == 0)
+	{
+		if (flags->b_flag_zero == 1)
+			ft_char_right(car, c, size, 0);
+		else
+			ft_char_right(car, c, size, 1);
+	}	
+	else
+		ft_char_left(car, c, size);	
+	//display_char(car, size, flags, c);
 	ft_putstr(c);
 	*res += ft_strlen(c);
 	free(c);
