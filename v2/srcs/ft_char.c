@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 17:42:11 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 17:46:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 
-static void	ft_char_right(char car, char *c, unsigned int width, int mod)
+void	ft_char_right(char car, char *c, unsigned int width, int mod)
 {
 	unsigned int i;
 	char		 fill;
@@ -31,7 +31,7 @@ static void	ft_char_right(char car, char *c, unsigned int width, int mod)
 	}
 }
 
-static void	ft_char_left(char car, char *c, unsigned int width)
+void	ft_char_left(char car, char *c, unsigned int width)
 {
 	unsigned int i;
 
@@ -88,49 +88,5 @@ int		ft_char(va_list args, int *res, flag_list *flags)
 		write(1, "\0", 1);
 	if (car == '\0')
 		*res += 1;
-	return (1);
-}
-
-void	display_percent(char car, unsigned int size, flag_list *flags, char *c)
-{	
-	if (flags->b_flag_minus == 0)
-	{
-		if (flags->b_flag_zero == 1)
-			ft_char_right(car, c, size, 0);
-		else
-			ft_char_right(car, c, size, 1);
-	}	
-	else
-		ft_char_left(car, c, size);	
-}
-
-int		ft_percent(va_list args, int *res, flag_list *flags)
-{
-	char			car;
-	char			*c;
-	unsigned int	size;
-	
-	(void)args;
-	size = 1;
-	if(flags->b_precision == 1)
-		return ((*res = -1));
-	if (flags->b_width == 1 && flags->v_width > 1)
-		size = flags->v_width;
-	if (!(c = malloc(sizeof(char) * (size + 1))))
-		return ((*res = -1));
-	car = '%';
-/*	if (flags->b_flag_minus == 0)
-	{
-		if (flags->b_flag_zero == 1)
-			ft_char_right(car, c, size, 0);
-		else
-			ft_char_right(car, c, size, 1);
-	}	
-	else
-		ft_char_left(car, c, size);	*/
-	display_percent(car, size, flags, c);
-	ft_putstr(c);
-	*res += ft_strlen(c);
-	free(c);
 	return (1);
 }

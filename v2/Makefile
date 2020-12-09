@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2020/12/09 16:39:01 by jacher           ###   ########.fr        #
+#    Updated: 2020/12/09 17:47:25 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ srcs/ft_hexa.c \
 srcs/ft_int.c \
 srcs/ft_itoa_printf.c \
 srcs/ft_parsing_help.c \
+srcs/ft_percent.c \
 srcs/ft_putadd.c \
 srcs/ft_string.c \
 srcs/ft_utils.c \
