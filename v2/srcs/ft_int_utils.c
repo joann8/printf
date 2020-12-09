@@ -6,13 +6,14 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 18:38:20 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 18:42:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 
-void		manage_negative(char *s, char *tmp, unsigned int *dif, unsigned int *i)
+void		manage_negative(char *s, char *tmp, unsigned int *dif,
+								unsigned int *i)
 {
 	if (s[0] == '-')
 	{
@@ -21,7 +22,7 @@ void		manage_negative(char *s, char *tmp, unsigned int *dif, unsigned int *i)
 		*i += 1;
 	}
 }
-	
+
 void		ft_int_left_np(char *s, char *tmp, unsigned int width,
 							unsigned int length)
 {
@@ -52,13 +53,6 @@ void		ft_int_left(char *s, char *tmp, unsigned int width,
 	i = 0;
 	dif = 0;
 	manage_negative(s, tmp, &dif, &i);
-	/*
-	if (s[0] == '-')
-	{
-		dif = 1;
-		tmp[0] = '-';
-		i++;
-	}*/
 	while (i - dif < length - ft_strlen(s))
 	{
 		tmp[i] = '0';
@@ -94,12 +88,6 @@ void		ft_int_right(char *s, char *tmp, unsigned int width,
 		i++;
 	}
 	manage_negative(s, tmp, &dif, &i);
-	/*if (s[0] == '-')
-	{
-		dif = 1;
-		tmp[i] = '-';
-		i++;
-	}*/
 	j = 0;
 	while (j < length - ft_strlen(s))
 	{
@@ -108,13 +96,13 @@ void		ft_int_right(char *s, char *tmp, unsigned int width,
 		j++;
 	}
 	j = 0;
-	while (s[j + dif] && (i < length || i < width))
+	while (s[j + dif] && (i + j < length || i + j < width))
 	{
-		tmp[i] = s[j + dif];
-		i++;
+		tmp[i + j] = s[j + dif];
+		//i++;
 		j++;
 	}
-	tmp[i] = '\0';
+	tmp[i + j] = '\0';
 }
 
 void		ft_int_right_0(char *s, char *tmp, unsigned int width,
@@ -127,12 +115,6 @@ void		ft_int_right_0(char *s, char *tmp, unsigned int width,
 	i = 0;
 	dif = 0;
 	manage_negative(s, tmp, &dif, &i);
-	/*if (s[0] == '-')
-	{
-		dif = 1;
-		tmp[i] = '-';
-		i++;
-	}*/
 	j = 0;
 	while (j < length - ft_strlen(s))
 	{
