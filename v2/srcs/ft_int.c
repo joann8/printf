@@ -6,20 +6,33 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 18:51:57 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 19:01:58 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 
 void	display_int(char *tmp1, int *res, char *tmp)
-{	
+{
 	ft_putstr(tmp1);
 	*res += ft_strlen(tmp1);
 	free(tmp1);
 	free(tmp);
 }
 
+int		manage_precision_0(flag_list *flags, char *tmp)
+{
+	if (flags->b_width == 1)
+	{
+		tmp[0] = ' ';
+		return (0);
+	}
+	else
+	{
+		write(1, "", 0);
+		return (1);
+	}
+}
 int		ft_unsint(va_list args, int *res, flag_list *flags)
 {
 	unsigned int	d;
@@ -28,21 +41,23 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 	unsigned int	width;
 	unsigned int	length;
 	unsigned int	size;
-	
+
 	d = va_arg(args, unsigned int);
-	tmp = ft_itoa_unsint(d);	
+	tmp = ft_itoa_unsint(d);
 	if (d == 0 && flags->b_precision == 1 && flags->v_length == 0)
-	{
+		if ((manage_precision_0(flags, tmp) == 1))
+			return (1);
+	/*{
 		if (flags->b_width == 1)
 			tmp[0] = ' ';
 		else
 		{
 			write(1, "", 0);
-			return(1);
+			return (1); // res ?
 		}
-	}
+	}*/
 	width = ft_strlen(tmp);
-	length = ft_strlen(tmp);	
+	length = ft_strlen(tmp);
 	if (flags->b_width == 1 && width < flags->v_width)
 		width = flags->v_width;
 	if (flags->b_precision == 1)
@@ -51,10 +66,7 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 		if (length < flags->v_length)
 			length = flags->v_length;
 		if (length > width)
-		{	
 			flags->b_flag_zero = 1;
-			//width = length;
-		}
 	}
 	if (length > width || (length > ft_strlen(tmp) && width > length))
 		size = length;
@@ -76,19 +88,15 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 	}
 	else
 	{
-		if (flags->b_flag_zero == 1)	
+		if (flags->b_flag_zero == 1)
 			ft_int_right_0(tmp, tmp1, width, length);
 		else
 			ft_int_right(tmp, tmp1, width, length);
 	}
 	display_int(tmp1, res, tmp);
-	/*
-	ft_putstr(tmp1);
-	*res += ft_strlen(tmp1);
-	free(tmp1);
-	free(tmp);*/
 	return (1);
 }
+
 
 int		ft_int(va_list args, int *res, flag_list *flags)
 {
@@ -99,20 +107,23 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 	unsigned int	length;
 	unsigned int	size;
 
-	d = va_arg(args, int);	
+	d = va_arg(args, int);
 	tmp = ft_itoa_int(d);
 	if (d == 0 && flags->b_precision == 1 && flags->v_length == 0)
-	{
+		if ((manage_precision_0(flags, tmp) == 1))
+			return (1);
+/*
 		if (flags->b_width == 1)
 			tmp[0] = ' ';
 		else
 		{
 			write(1, "", 0);
-			return(1);
+			return (1);
 		}
-	}
+	}*/
+
 	width = ft_strlen(tmp);
-	length = ft_strlen(tmp);	
+	length = ft_strlen(tmp);
 	if (flags->b_width == 1 && width < flags->v_width)
 		width = flags->v_width;
 	if (flags->b_precision == 1)
@@ -121,10 +132,7 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 		if (length < flags->v_length)
 			length = flags->v_length;
 		if (length > width)
-		{	
 			flags->b_flag_zero = 1;
-			//width = length;
-		}
 	}
 	if (length > width || (length > ft_strlen(tmp) && width > length))
 	{
@@ -150,18 +158,11 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 	}
 	else
 	{
-		if (flags->b_flag_zero == 1)	
+		if (flags->b_flag_zero == 1)
 			ft_int_right_0(tmp, tmp1, width, length);
 		else
 			ft_int_right(tmp, tmp1, width, length);
 	}
 	display_int(tmp1, res, tmp);
-	/*
-	ft_putstr(tmp1);
-	*res += ft_strlen(tmp1);
-	free(tmp1);
-	free(tmp);*/
 	return (1);
 }
-
-
