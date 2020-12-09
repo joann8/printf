@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 16:48:55 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 21:34:41 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ arg_list	*struct_init(void)
 	list[6].c_init = 'x';
 	list[6].f = &ft_x;
 	list[7].c_init = 'X';
-	list[7].f = &ft_X;
+	list[7].f = &ft_bigx;
 	list[8].c_init = 'p';
 	list[8].f = &ft_p;
 	return (list);

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 21:15:01 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 21:34:21 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int				ft_char(va_list args, int *res, flag_list *flags);
 int				ft_int(va_list args, int *res, flag_list *flags);
 int				ft_unsint(va_list args, int *res, flag_list *flags);
 int				ft_x(va_list args, int *res, flag_list *flags);
-int				ft_X(va_list args, int *res, flag_list *flags);
+int				ft_bigx(va_list args, int *res, flag_list *flags);
 int				ft_p(va_list args, int *res, flag_list *flags);
 int				ft_string(va_list args, int *res, flag_list *flags);
 
