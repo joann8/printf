@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:09:53 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 18:18:57 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 15:25:52 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,35 @@ char			*ft_itoa_int(int n)
 	return (tab);
 }
 
+void			fill_table(unsigned int n, char *tab, int size, int mode)
+{
+	char			*base;
+	unsigned int 	i;
+	
+	if (mode == 1)
+	{
+		base = "0123456789";
+		i = 10;
+	}
+	if (mode == 2)
+	{
+		base = "0123456789abcdef";
+		i = 16;
+	}
+	if (mode == 3)
+	{
+		base = "0123456789ABCDEF";
+		i = 16;
+	}
+	while (n > 0)
+	{
+		tab[size - 1] = base[n % i];
+		n = n / i;
+		size--;
+	}
+}
+
+
 char			*ft_itoa_unsint(unsigned int n)
 {
 	unsigned int	nbr;
@@ -73,7 +102,7 @@ char			*ft_itoa_unsint(unsigned int n)
 	while (nbr > 0)
 	{
 		size = size + 1;
-		nbr = nbr /10;
+		nbr = nbr / 10;
 	}
 	if (!(tab = malloc(sizeof(char) * (size + 1))))
 		return (NULL);
@@ -81,6 +110,8 @@ char			*ft_itoa_unsint(unsigned int n)
 	if (n == 0)
 		tab[0] = '0';
 	else
+		fill_table(n, tab, size, 1);
+	/*
 	{
 		while (n > 0)
 		{
@@ -88,7 +119,7 @@ char			*ft_itoa_unsint(unsigned int n)
 			n = n / 10;
 			size--;
 		}
-	}
+	}*/
 	return (tab);
 }
 
@@ -97,12 +128,12 @@ char			*ft_itoa_x(unsigned int n, char letter)
 	unsigned int	nbr;
 	unsigned int	size;
 	char			*tab;
-	char			*base;
+//	char			*base;
 
-	if (letter == 'x')
+/*	if (letter == 'x')
 		base = "0123456789abcdef";
 	else
-		base = "0123456789ABCDEF";
+		base = "0123456789ABCDEF";*/
 	size = 0;
 	if (n == 0)
 		size++;
@@ -110,7 +141,7 @@ char			*ft_itoa_x(unsigned int n, char letter)
 	while (nbr > 0)
 	{
 		size = size + 1;
-		nbr = nbr /16;
+		nbr = nbr / 16;
 	}
 	if (!(tab = malloc(sizeof(char) * (size + 1))))
 		return (NULL);
@@ -119,12 +150,19 @@ char			*ft_itoa_x(unsigned int n, char letter)
 		tab[0] = '0';
 	else
 	{
+		if (letter == 'x')
+			fill_table(n, tab, size, 2);
+		else
+			fill_table(n, tab, size, 3);
+	}
+	/*
+	{
 		while (n > 0)
 		{
 			tab[size - 1] = base[n % 16];
 			n = n / 16;
 			size--;
 		}
-	}
+	}*/
 	return (tab);
 }
