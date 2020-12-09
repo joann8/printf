@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 16:05:45 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 16:09:02 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 //	printf("ok3\n");
 	free(tmp);
 //	printf("ok4\n");
-//	free(s);
+//	free(s); //probleme leak
 //	printf("exit\n");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 11:50:18 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 20:46:51 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 16:13:35 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ char 	*ft_putadd(void *add)
 	unsigned long	nb;
 	unsigned int	size;
 	char			*tab;
-	char			*base;
+	//char			*base;
 	
 	n = (long)add;
-	base = "0123456789abcdef";
+	//base = "0123456789abcdef";
 	if (n < 0)
 		nb = -n;
 	else
@@ -43,13 +43,6 @@ char 	*ft_putadd(void *add)
 	if (n == 0)
 		tab[2] = '0';
 	else
-	{
-		while (n > 0)
-		{
-			tab[size - 1] = base[n % 16];
-			n = n / 16;
-			size--;
-		}
-	}
+		fill_table(n, tab, size, 'a');
 	return(tab);
 }
