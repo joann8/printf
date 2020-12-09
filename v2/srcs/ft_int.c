@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 19:01:58 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 19:07:38 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,21 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 	return (1);
 }
 
+void	string_trunc(flag_list *flags, char *tmp, unsigned int *width, unsigned int *length)
+{
+	*width = ft_strlen(tmp);
+	*length = ft_strlen(tmp);
+	if (flags->b_width == 1 && *width < flags->v_width)
+		*width = flags->v_width;
+	if (flags->b_precision == 1)
+	{
+		flags->b_flag_zero = 0;
+		if (*length < flags->v_length)
+			*length = flags->v_length;
+		if (*length > *width)
+			flags->b_flag_zero = 1;
+	}
+}
 
 int		ft_int(va_list args, int *res, flag_list *flags)
 {
@@ -112,6 +127,7 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 	if (d == 0 && flags->b_precision == 1 && flags->v_length == 0)
 		if ((manage_precision_0(flags, tmp) == 1))
 			return (1);
+	string_trunc(flags, tmp, &width, &length);
 /*
 		if (flags->b_width == 1)
 			tmp[0] = ' ';
@@ -121,7 +137,7 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 			return (1);
 		}
 	}*/
-
+/*
 	width = ft_strlen(tmp);
 	length = ft_strlen(tmp);
 	if (flags->b_width == 1 && width < flags->v_width)
@@ -133,7 +149,7 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 			length = flags->v_length;
 		if (length > width)
 			flags->b_flag_zero = 1;
-	}
+	}*/
 	if (length > width || (length > ft_strlen(tmp) && width > length))
 	{
 		if (d < 0)
