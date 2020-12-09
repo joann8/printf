@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 12:32:43 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 16:14:39 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int				ft_string(va_list args, int *res, flag_list *flags);
 char			*ft_itoa_int(int n);
 char			*ft_itoa_unsint(unsigned int n);
 char			*ft_itoa_x(unsigned int n, char letter);
+void			fill_table(unsigned int n, char *tab, int size, char letter);
 char			*ft_putadd(void *add);
 char			*ft_strjoin_printf(char *s1, char *s2);
 void			cpy_join(char *src, char *str, unsigned int l, unsigned int st);
