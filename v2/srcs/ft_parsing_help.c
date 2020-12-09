@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 18:52:03 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 12:52:57 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ void	ft_length(flag_list *flags, va_list args)
 		s_tmp = (int)va_arg(args, int);
 		if (s_tmp < 0)
 		{
-			length = -s_tmp;
-			//flags->b_flag_minus = 1;
+			flags->b_precision = 0;
+			flags->v_length = 0;
+			//length = -s_tmp;
+			flags->b_flag_minus = 1;
 		}
 		else
 		{
