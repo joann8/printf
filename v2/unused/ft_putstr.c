@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 10:44:39 by jacher            #+#    #+#             */
-/*   Updated: 2020/11/10 10:48:08 by jacher           ###   ########.fr       */
+/*   Created: 2020/11/19 14:28:28 by jacher            #+#    #+#             */
+/*   Updated: 2020/12/07 16:40:41 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../printf.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putstr(char *s)
 {
-	ft_memset(s, '\0', n);
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
 }

@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 10:37:04 by jacher            #+#    #+#             */
-/*   Updated: 2020/11/11 11:10:14 by jacher           ###   ########.fr       */
+/*   Created: 2020/11/09 17:23:59 by jacher            #+#    #+#             */
+/*   Updated: 2020/12/03 14:58:55 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../printf.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+size_t	ft_strlen(const char *str)
 {
-	size_t			i;
-	unsigned char	car;
-	unsigned char	*src;
+	size_t	i;
 
 	i = 0;
-	car = (unsigned char)c;
-	src = (unsigned char*)s;
-	while (i < n)
-	{
-		src[i] = car;
+	while (str[i])
 		i++;
-	}
-	return (s);
+	return (i);
 }

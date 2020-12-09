@@ -23,6 +23,14 @@ int main()
 	printf("%-5c\n", c3);
 
 
+	printf("*************");
+	printf("\n\npf | un %---25p deux %p trois \n", ptr, ptr2);	
+	printf("\n\npf | un %-25p deux %p trois \n", ptr, ptr2);	
+	ft_printf("my | un %---25p deux %p trois \n", ptr, ptr2);	
+	ft_printf("my | un %-25p deux %p trois \n", ptr, ptr2);
+	printf("\n*************");
+
+
 // TEST ADD
 	printf("\n\npf | un %-25p deux %p trois \n", ptr, ptr2);	
 	ft_printf("my | un %-25p deux %p trois \n", ptr, ptr2);	

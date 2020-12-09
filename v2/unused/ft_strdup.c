@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 11:01:38 by jacher            #+#    #+#             */
-/*   Updated: 2020/11/11 11:14:07 by jacher           ###   ########.fr       */
+/*   Created: 2020/11/10 11:46:27 by jacher            #+#    #+#             */
+/*   Updated: 2020/12/03 14:59:47 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../printf.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strdup(const char *s)
 {
-	const unsigned char		*s;
-	unsigned char			*d;
-	size_t					i;
+	char	*tab;
+	int		i;
 
-	i = 0;
-	s = (unsigned char *)src;
-	d = (unsigned char *)dest;
-	if (!s && !d)
+	if (!(tab = malloc(sizeof(char) * (ft_strlen(s) + 1))))
 		return (NULL);
-	if (s < d)
+	i = 0;
+	while (s[i])
 	{
-		while (++i <= n)
-			d[n - i] = s[n - i];
+		tab[i] = s[i];
+		i++;
 	}
-	else
-	{
-		while (n - i > 0)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	}
-	return (dest);
+	tab[i] = s[i];
+	return (tab);
 }

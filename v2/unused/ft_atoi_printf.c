@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_printf.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 11:34:18 by jacher            #+#    #+#             */
-/*   Updated: 2020/11/23 10:26:21 by jacher           ###   ########.fr       */
+/*   Created: 2020/11/09 19:17:13 by jacher            #+#    #+#             */
+/*   Updated: 2020/12/08 12:40:40 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../printf.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+unsigned int	ft_atoi_printf(const char *str, unsigned int *pos, flag_list *flags)
 {
-	void		*tab;
+	unsigned int		i;
+	unsigned int		res;
 
-	if (!(tab = malloc(nmemb * size)))
-		return (NULL);
-	return (ft_memset(tab, 0, nmemb * size));
+	i = 0;
+	res = 0;
+	while (str[i] == '-')
+	{
+		flags->b_flag_minus = 1; 
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - 48;
+		i++;
+	}
+	*pos = *pos + i;
+	return (res);
 }
