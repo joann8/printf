@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 14:53:47 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 16:05:45 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 	char			*tmp;
 	unsigned int	length;
 	unsigned int	width;
-	
+
+//	printf("nter string\n");
 	//print_flags(*flags);
 	if (flags->b_flag_zero == 1)
 		return ((*res = -1)); 
@@ -91,19 +92,26 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 				width = length;
 				
 	}
+//	printf("flags done\n");
 //	printf("\n*****width =%u | length = %d\n", width, length);
 	if (!(tmp = malloc(sizeof(char) * (width + 1))))
 	{
-		free(s);
+		//free(s);
 		return ((*res = 1)); //erreur >> -1?
 	}
 	if (flags->b_flag_minus == 1)
 		ft_string_left(s, tmp, width, length);
 	else
 		ft_string_right(s, tmp, width, length);
+	
+//	printf("ok\n");
 	ft_putstr(tmp);
+//	printf("ok2\n");
 	*res = ft_strlen(tmp);
+//	printf("ok3\n");
 	free(tmp);
-	free(s);
+//	printf("ok4\n");
+//	free(s);
+//	printf("exit\n");
 	return (1);
 }
