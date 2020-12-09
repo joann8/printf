@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 22:22:32 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 22:24:24 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	 *str_analysis_help(flag_list *flags, unsigned int *i,
 							char **str, va_list args)
 {
-	unsigned int	 j;
+	unsigned int	j;
 	unsigned int 	plus;
 	char			*tmp;
 
@@ -35,7 +35,6 @@ int		str_analysis(char **str, int *res, va_list args, arg_list *list)
 {
 	unsigned int		i;
 	unsigned int		j;
-//	unsigned int		plus;
 	char 				*tmp;
 	flag_list			flags;
 
@@ -43,13 +42,6 @@ int		str_analysis(char **str, int *res, va_list args, arg_list *list)
 	while ((*str)[i] != '\0')
 	{
 		flag_init(&flags);
-	/*	j = i;
-		plus = 0;
-		while ((*str)[i] != '%' && (*str)[i])
-			i++;
-		if ((*str)[i])
-			if (flag_parsing(&flags, *str + i + 1, &plus, args) == 0)
-				return (-1);*/
 		if ((tmp = str_analysis_help(&flags, &i, str, args)) == NULL)
 			return (-1);
 		ft_putstr(tmp);
@@ -58,21 +50,16 @@ int		str_analysis(char **str, int *res, va_list args, arg_list *list)
 		j = 0;
 		while (list[j].c_init)
 		{
-			//if ((*str)[i + plus] == list[j].c_init)
 			if ((*str)[i] == list[j].c_init)
 			{		
 				if (((list[j].f(args, res, &flags)) == -1))
-				{
-					//ft_free(list, *str);
-					//va_end(args);
 					return(-1);
-				}
 				break;
 			}
 			j++;
 		}
 		if ((*str)[i])
-			i += 1; //i + plus + 1;
+			i += 1;
 	}
 	return (1);
 }
