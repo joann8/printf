@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/07 16:48:29 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 16:36:20 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 
-void ft_free(arg_list *list, char *str)
+void		ft_free(arg_list *list, char *str)
 {
 	if (str)
 		free(str);
@@ -22,10 +22,10 @@ void ft_free(arg_list *list, char *str)
 
 arg_list	*struct_init(void)
 {
-	arg_list 	*list;
+	arg_list	*list;
 
 	if (!(list = malloc(sizeof(arg_list) * 10)))
-		return(NULL);
+		return (NULL);
 	list[9].c_init = '\0';
 	list[0].c_init = 's';
 	list[0].f = &ft_string;
@@ -48,7 +48,7 @@ arg_list	*struct_init(void)
 	return (list);
 }
 
-int		is_a_type(char c)
+int			is_a_type(char c)
 {
 	if (c == 'd' || c == 'c' || c == 'p' || c == 's' || c == 'i' ||
 			c == 'u' || c == 'x' || c == 'X' || c == '%')
@@ -57,7 +57,7 @@ int		is_a_type(char c)
 		return (0);
 }
 
-void 	flag_init(flag_list *flags)
+void		flag_init(flag_list *flags)
 {
 	flags->b_flag_zero = 0;
 	flags->b_flag_minus = 0;
@@ -67,4 +67,4 @@ void 	flag_init(flag_list *flags)
 	flags->v_length = 0;
 	flags->b_star_width = 0;
 	flags->b_star_length = 0;
-}	
+}
