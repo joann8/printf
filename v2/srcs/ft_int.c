@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 21:29:02 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 21:36:26 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 	int_format(flags, tmp, &width, &length);
 	if (((tmp1 = create_int(tmp, flags, width, length)) == NULL))
 	{
-		free (tmp);
-		return((*res = -1));
+		free(tmp);
+		return ((*res = -1));
 	}
 	display_int(tmp1, res, tmp);
 	return (1);
