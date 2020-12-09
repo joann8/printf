@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 18:42:43 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 18:47:44 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,16 @@ void		ft_int_right(char *s, char *tmp, unsigned int width,
 	}
 	manage_negative(s, tmp, &dif, &i);
 	j = 0;
-	while (j < length - ft_strlen(s))
+	while (j++ < length - ft_strlen(s))
 	{
 		tmp[i] = '0';
 		i++;
-		j++;
+	//	j++;
 	}
 	j = 0;
 	while (s[j + dif] && (i + j < length || i + j < width))
 	{
 		tmp[i + j] = s[j + dif];
-		//i++;
 		j++;
 	}
 	tmp[i + j] = '\0';
