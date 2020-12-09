@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:09:53 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 15:25:52 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 15:31:48 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,22 @@ char			*ft_itoa_int(int n)
 	return (tab);
 }
 
-void			fill_table(unsigned int n, char *tab, int size, int mode)
+void			fill_table(unsigned int n, char *tab, int size, char letter)
 {
 	char			*base;
-	unsigned int 	i;
-	
-	if (mode == 1)
+	unsigned int	i;
+
+	if (letter == 'd')
 	{
 		base = "0123456789";
 		i = 10;
 	}
-	if (mode == 2)
+	if (letter == 'x')
 	{
 		base = "0123456789abcdef";
 		i = 16;
 	}
-	if (mode == 3)
+	if (letter == 'X')
 	{
 		base = "0123456789ABCDEF";
 		i = 16;
@@ -87,7 +87,6 @@ void			fill_table(unsigned int n, char *tab, int size, int mode)
 		size--;
 	}
 }
-
 
 char			*ft_itoa_unsint(unsigned int n)
 {
@@ -110,16 +109,7 @@ char			*ft_itoa_unsint(unsigned int n)
 	if (n == 0)
 		tab[0] = '0';
 	else
-		fill_table(n, tab, size, 1);
-	/*
-	{
-		while (n > 0)
-		{
-			tab[size - 1] = n % 10 + '0';
-			n = n / 10;
-			size--;
-		}
-	}*/
+		fill_table(n, tab, size, 'd');
 	return (tab);
 }
 
@@ -128,12 +118,7 @@ char			*ft_itoa_x(unsigned int n, char letter)
 	unsigned int	nbr;
 	unsigned int	size;
 	char			*tab;
-//	char			*base;
 
-/*	if (letter == 'x')
-		base = "0123456789abcdef";
-	else
-		base = "0123456789ABCDEF";*/
 	size = 0;
 	if (n == 0)
 		size++;
@@ -149,20 +134,6 @@ char			*ft_itoa_x(unsigned int n, char letter)
 	if (n == 0)
 		tab[0] = '0';
 	else
-	{
-		if (letter == 'x')
-			fill_table(n, tab, size, 2);
-		else
-			fill_table(n, tab, size, 3);
-	}
-	/*
-	{
-		while (n > 0)
-		{
-			tab[size - 1] = base[n % 16];
-			n = n / 16;
-			size--;
-		}
-	}*/
+		fill_table(n, tab, size, letter);
 	return (tab);
 }
