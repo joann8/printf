@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 18:20:33 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 21:58:54 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void			string_help(flag_list *flags, unsigned int *width,
 				*width = ft_strlen(s);
 		}
 		if (*length < ft_strlen(s))
-			if (flags->b_width == 0)
+		{
+			if (flags->b_width == 0 || *width < *length)
 				*width = *length;
+		}
 	}
 }
 
