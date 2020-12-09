@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 16:09:02 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 18:02:23 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void		ft_string_right(char *s, char *tmp, unsigned int width,
 	{
 		tmp[i] = ' ';
 		i++;
-	}	
+	}
 	while (i + ft_strlen(s) < width)
 	{
 		tmp[i] = ' ';
@@ -57,17 +57,35 @@ static void		ft_string_right(char *s, char *tmp, unsigned int width,
 	}
 }
 
-int		ft_string(va_list args, int *res, flag_list *flags)
+void	string_help(flag_list *flags, unsigned int *width, unsigned int *length, char *s)
 {
-	char 			*s;
+	*width = ft_strlen(s);
+	if (flags->b_width == 1)
+		*width = flags->v_width;
+	*length = ft_strlen(s);
+	if (flags->b_precision == 1)
+	{
+		*length = flags->v_length;
+		if (*length > ft_strlen(s))
+		{
+			if (*width < ft_strlen(s))
+				*width = ft_strlen(s);
+		}
+		if (*length < ft_strlen(s))
+			if (flags->b_width == 0)
+				*width = *length;
+	}
+}
+
+int				ft_string(va_list args, int *res, flag_list *flags)
+{
+	char			*s;
 	char			*tmp;
 	unsigned int	length;
 	unsigned int	width;
 
-//	printf("nter string\n");
-	//print_flags(*flags);
 	if (flags->b_flag_zero == 1)
-		return ((*res = -1)); 
+		return ((*res = -1));
 	s = va_arg(args, char *);
 	if (s == NULL)
 	{
@@ -75,7 +93,8 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 		if (flags->b_width == 0 && flags->b_star_length == 1)
 			flags->b_precision = 0;
 	}
-	width = ft_strlen(s);
+	string_help(flags, &width, &length, s);
+/*	width = ft_strlen(s);
 	if (flags->b_width == 1)
 		width = flags->v_width;
 	length = ft_strlen(s);
@@ -90,28 +109,19 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 		if (length < ft_strlen(s))
 			if (flags->b_width == 0)
 				width = length;
-				
-	}
-//	printf("flags done\n");
-//	printf("\n*****width =%u | length = %d\n", width, length);
+	}*/
 	if (!(tmp = malloc(sizeof(char) * (width + 1))))
 	{
 		//free(s);
-		return ((*res = 1)); //erreur >> -1?
+		return ((*res = 1));
 	}
 	if (flags->b_flag_minus == 1)
 		ft_string_left(s, tmp, width, length);
 	else
 		ft_string_right(s, tmp, width, length);
-	
-//	printf("ok\n");
 	ft_putstr(tmp);
-//	printf("ok2\n");
 	*res = ft_strlen(tmp);
-//	printf("ok3\n");
 	free(tmp);
-//	printf("ok4\n");
 //	free(s); //probleme leak
-//	printf("exit\n");
 	return (1);
 }

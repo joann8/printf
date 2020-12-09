@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 17:52:53 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 17:53:33 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,6 @@ int		ft_char(va_list args, int *res, flag_list *flags)
 		write(1, "\0", 1);
 	if (size != 0)
 		display_c(c, res);
-	/*{
-		ft_putstr(c);
-		*res += ft_strlen(c);
-		free(c);
-	}*/
 	if (car == '\0' && flags->b_flag_minus == 0)
 		write(1, "\0", 1);
 	if (car == '\0')
