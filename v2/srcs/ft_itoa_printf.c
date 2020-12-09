@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:09:53 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 16:13:02 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 16:22:16 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void			fill_table(unsigned int n, char *tab, int size, char letter)
 		base = "0123456789";
 		i = 10;
 	}
-	if (letter == 'x' || letter == 'a')
+	if (letter == 'x')
 	{
 		base = "0123456789abcdef";
 		i = 16;

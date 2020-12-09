@@ -6,11 +6,26 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 11:50:18 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 16:13:35 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 16:24:19 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
+
+void			fill_table_hexa(unsigned long n, char *tab, int size)
+{
+	char			*base;
+	unsigned int	i;
+
+	base = "0123456789abcdef";
+	i = 16;
+	while (n > 0)
+	{
+		tab[size - 1] = base[n % i];
+		n = n / i;
+		size--;
+	}
+}
 
 char 	*ft_putadd(void *add)
 {
@@ -40,9 +55,14 @@ char 	*ft_putadd(void *add)
 	tab[size] = '\0';
 	tab[0] = '0';
 	tab[1] = 'x';
-	if (n == 0)
+	if (n < 0)
+		nb = -n;
+	else
+		nb = n;
+	
+	if (nb == 0)
 		tab[2] = '0';
 	else
-		fill_table(n, tab, size, 'a');
+		fill_table_hexa(nb, tab, size);
 	return(tab);
 }
