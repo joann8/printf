@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 17:39:41 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 17:40:56 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int		ft_percent(va_list args, int *res, flag_list *flags)
 	}	
 	else
 		ft_char_left(car, c, size);	*/
-	display_char(car, size, flags, c);
+	display_char(car, size, flags, &c);
 	ft_putstr(c);
 	*res += ft_strlen(c);
 	free(c);
