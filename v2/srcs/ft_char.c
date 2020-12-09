@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 17:25:38 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 17:34:48 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,11 @@ int		ft_char(va_list args, int *res, flag_list *flags)
 		return ((*res = -1));
 	if (flags->b_width == 1 && flags->v_width > 1)
 		size = flags->v_width;
-	car = (char)va_arg(args, int);
-	if (car == '\0')
+//	car = (char)va_arg(args, int);
+	if ((car = (char)va_arg(args, int)) == '\0')
 		size--;
 	if (size > 0 && !(c = malloc(sizeof(char) * (size + 1))))
-		return ((*res = -1)); //erreur
-	/*if (car == '\0')
-	{
-		if (size > 0)
-			ft_char_right(' ', c, size, 1);
-	}
-	else if (flags->b_flag_minus == 0)
-		ft_char_right(car, c, size, 1);	
-	else 
-		ft_char_left(car, c, size);*/
+		return ((*res = -1)); 
 	display_char(car, size, flags, c);
 	if (car == '\0' && flags->b_flag_minus == 1)
 		write(1, "\0", 1);
@@ -98,6 +89,19 @@ int		ft_char(va_list args, int *res, flag_list *flags)
 	if (car == '\0')
 		*res += 1;
 	return (1);
+}
+
+void	display_percent(char car, unsigned int size, flag_list *flags, char *c)
+{	
+	if (flags->b_flag_minus == 0)
+	{
+		if (flags->b_flag_zero == 1)
+			ft_char_right(car, c, size, 0);
+		else
+			ft_char_right(car, c, size, 1);
+	}	
+	else
+		ft_char_left(car, c, size);	
 }
 
 int		ft_percent(va_list args, int *res, flag_list *flags)
@@ -118,15 +122,7 @@ int		ft_percent(va_list args, int *res, flag_list *flags)
 		return (-1); //erreur
 	}
 	car = '%';
-	if (flags->b_flag_minus == 0)
-	{
-		if (flags->b_flag_zero == 1)
-			ft_char_right(car, c, size, 0);
-		else
-			ft_char_right(car, c, size, 1);
-	}	
-	else
-		ft_char_left(car, c, size);	
+	display_char(car, size, flags, c);
 	ft_putstr(c);
 	*res += ft_strlen(c);
 	free(c);
