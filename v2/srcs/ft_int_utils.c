@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 18:47:44 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 18:48:17 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void		ft_int_right(char *s, char *tmp, unsigned int width,
 	{
 		tmp[i] = '0';
 		i++;
-	//	j++;
 	}
 	j = 0;
 	while (s[j + dif] && (i + j < length || i + j < width))
