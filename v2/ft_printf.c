@@ -6,24 +6,20 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 18:52:30 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 15:00:31 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-
-
 int	str_analysis(char **str, int *res, va_list args, arg_list *list)
 {
-	unsigned int		 i;
-	unsigned int		 j;
-	unsigned int		 plus;
-	char 				*tmp1;
-	//char 				*tmp2;
+	unsigned int		i;
+	unsigned int		j;
+	unsigned int		plus;
+	char 				*tmp;
 	flag_list			flags;
 
-	(void)res;
 	i = 0;
 	while ((*str)[i] != '\0')
 	{
@@ -35,16 +31,10 @@ int	str_analysis(char **str, int *res, va_list args, arg_list *list)
 		if ((*str)[i])
 			if (flag_parsing(&flags, *str + i + 1, &plus, args) == 0)
 				return (-1);
-		tmp1 = ft_strdup_pf(*str, j, i);
-		ft_putstr(tmp1);
-		*res += ft_strlen(tmp1);
-		free(tmp1);
-	/*	if (*res == NULL)
-		{
-			ft_free(*res, list, *str);
-			va_end(args);
-			return(-1);
-		}*/
+		tmp = ft_strdup_pf(*str, j, i);
+		ft_putstr(tmp);
+		*res += ft_strlen(tmp);
+		free(tmp);
 		j = 0;
 		while (list[j].c_init)
 		{
@@ -77,10 +67,8 @@ int ft_printf(const char *input, ...)
 	list = struct_init();
 	str = ft_strdup(input);
 	va_start(args, input);
-	
 	if ((str_analysis(&str, &res, args, list) == -1))
 		return (-1);
-
 	va_end(args);
 	ft_free(list, str);
 //	free_struct(list);
