@@ -6,12 +6,11 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 12:32:15 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 21:26:44 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
-#include <stdio.h>
 
 int		ft_x(va_list args, int *res, flag_list *flags)
 {
@@ -25,12 +24,15 @@ int		ft_x(va_list args, int *res, flag_list *flags)
 	char			*tmp1;
 	unsigned int	width;
 	unsigned int	length;
-	unsigned int	size;
+//	unsigned int	size;
 	
 	d = va_arg(args, unsigned int);
 	tmp = ft_itoa_x(d, 'x');
 	if (d == 0 && flags->b_precision == 1 && flags->v_length == 0)
-	{
+		if (manage_precision_0(flags, tmp) == 0) // a verifier
+			return( (*res = -1));
+/*			
+			
 		if (flags->b_width == 1)
 			tmp[0] = ' ';
 		else
@@ -38,9 +40,11 @@ int		ft_x(va_list args, int *res, flag_list *flags)
 			write(1, "", 0);
 			return(1);
 		}
-	}
+	}*/
 	width = ft_strlen(tmp);
-	length = ft_strlen(tmp);	
+	length = ft_strlen(tmp);
+	int_format(flags, tmp, &width, &length);
+	/*
 	if (flags->b_width == 1 && width < flags->v_width)
 		width = flags->v_width;
 	if (flags->b_precision == 1)
@@ -53,7 +57,13 @@ int		ft_x(va_list args, int *res, flag_list *flags)
 			flags->b_flag_zero = 1;
 			//width = length;
 		}
+	}*/
+	if ((tmp1 = create_int(tmp, flags, width, length)) == NULL)
+	{
+		free(tmp);
+		return ((*res = -1));
 	}
+	/*
 	if (length > width || (length > ft_strlen(tmp) && width > length))
 		size = length;
 	else
@@ -78,11 +88,13 @@ int		ft_x(va_list args, int *res, flag_list *flags)
 			ft_int_right_0(tmp, tmp1, width, length);
 		else
 			ft_int_right(tmp, tmp1, width, length);
-	}
+	}*/
+	display_int(tmp1, res, tmp);
+	/*
 	ft_putstr(tmp1);
 	*res += ft_strlen(tmp1);
 	free(tmp1);
-	free(tmp);
+	free(tmp);*/
 	return (1);
 /*
 	tmp = ft_itoa_x(d, 'x');
