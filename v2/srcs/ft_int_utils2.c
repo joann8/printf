@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 21:44:08 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 21:45:42 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,11 @@ void	change_size(unsigned int *size, char *tmp, unsigned int *width,
 	if (*length > *width || (*length > ft_strlen(tmp) && *width > *length))
 	{
 		if (tmp[0] == '-')
-			*length += 1;;
+			*length += 1;
 		*size = *length;
 	}
 }
 
-	
 char	*create_int(char *tmp, flag_list *flags, unsigned int width,
 						unsigned int length)
 {
@@ -71,15 +70,6 @@ char	*create_int(char *tmp, flag_list *flags, unsigned int width,
 
 	size = width;
 	change_size(&size, tmp, &width, &length);
-	/*
-	if (length > width || (length > ft_strlen(tmp) && width > length))
-	{
-		if (tmp[0] == '-')
-			length++;
-		size = length;
-	}*/
-	//else
-	//	size = width;
 	if (flags->b_flag_zero == 1 && flags->b_precision == 0)
 		length = width;
 	if (!(tmp1 = malloc(sizeof(char) * (size + 1))))
