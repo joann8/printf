@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 17:46:35 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 18:22:08 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void			ft_int_right_0(char *s, char *tmp, unsigned int width, unsigned int lengt
 void			ft_char_right(char car, char *c, unsigned int width, int mod);
 void			ft_char_left(char car, char *c, unsigned int width);
 void			ft_free(arg_list *list, char *str);
+void			ft_string_left(char *s, char *tmp, unsigned int width, unsigned int length);
+void			ft_string_right(char *s, char *tmp, unsigned int width, unsigned int length);
 int				is_a_type(char c);
 void			flag_init(flag_list *flags);
 
