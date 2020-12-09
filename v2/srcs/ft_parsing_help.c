@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 15:10:34 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 15:15:41 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	ft_width(flag_list *flags, va_list args)
 	else if (s_tmp > 0)
 		width = s_tmp;
 	flags->v_width = width;
-	return ; 
-}	
+	return ;
+}
 
 void	ft_length(flag_list *flags, va_list args)
 {
-	int	s_tmp;
+	int				s_tmp;
 	unsigned int	length;
-	
+
 	length = 0;
 	s_tmp = (int)va_arg(args, int);
 	if (s_tmp < 0)
@@ -47,8 +47,9 @@ void	ft_length(flag_list *flags, va_list args)
 	else
 		length = s_tmp;
 	flags->v_length = length;
-	return; 
+	return ;
 }
+
 void	flag_parsing_width(flag_list *flags, char *str, unsigned int *index)
 {
 	unsigned int i;
@@ -61,9 +62,9 @@ void	flag_parsing_width(flag_list *flags, char *str, unsigned int *index)
 		i++;
 	}
 	else if (str[i] == '-' && str[i + 1] == '*')
-	{	
+	{
 		flags->b_star_width = 1;
-		flags->b_flag_minus = 1; //sure?
+		flags->b_flag_minus = 1;
 		i++;
 	}
 	else
@@ -77,15 +78,15 @@ void	flag_parsing_precision(flag_list *flags, char *str, unsigned int *index)
 
 	i = *index;
 	flags->b_precision = 1;
-	flags->b_flag_zero = 0; // pas sure, check pour p?
-	i++;	
+	flags->b_flag_zero = 0;
+	i++;
 	if (str[i] == '*')
 	{
 		flags->b_star_length = 1;
 		i++;
 	}
 	else if (str[i] == '-' && str[i + 1] == '*')
-	{	
+	{
 		flags->b_star_length = 1;
 		i++;
 	}
@@ -94,7 +95,8 @@ void	flag_parsing_precision(flag_list *flags, char *str, unsigned int *index)
 	*index = i;
 }
 
-int	flag_parsing(flag_list *flags, char *str, unsigned int *pos, va_list args)
+int		flag_parsing(flag_list *flags, char *str, unsigned int *pos,
+						va_list args)
 {
 	unsigned int i;
 
@@ -103,19 +105,19 @@ int	flag_parsing(flag_list *flags, char *str, unsigned int *pos, va_list args)
 	{
 		flags->b_flag_minus = 1;
 		i++;
-	}	
-	if (str[i] == '0' && i == 0) 
+	}
+	if (str[i] == '0' && i == 0)
 	{
 		flags->b_flag_zero = 1;
 		i++;
 	}
-	if ((str[i] >= '0' && str[i] <= '9') || str[i] ==  '-' || str[i] == '*')
+	if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-' || str[i] == '*')
 		flag_parsing_width(flags, str, &i);
 	if (str[i] == '.')
 		flag_parsing_precision(flags, str, &i);
 	if (is_a_type(str[i]) == 0)
 		return (0);
-	*pos = *pos + i + 1;	
+	*pos = *pos + i + 1;
 	if (flags->b_star_width == 1)
 		ft_width(flags, args);
 	if (flags->b_star_length == 1)
