@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 19:28:33 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 12:27:47 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 		}
 	}
 	width = ft_strlen(tmp);
-	length = ft_strlen(tmp);
+	length = ft_strlen(tmp);	
 	if (flags->b_width == 1 && width < flags->v_width)
 		width = flags->v_width;
 	if (flags->b_precision == 1)
@@ -166,27 +166,19 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 		if (length > width)
 		{	
 			flags->b_flag_zero = 1;
-			width = length;
+			//width = length;
 		}
 	}
-	if (length > width)
-	{
+	if (length > width || (length > ft_strlen(tmp) && width > length))
 		size = length;
-		if (d < 0)
-		{
-			size++;
-			length++;
-		}
-	}
 	else
 		size = width;
-	if (flags->b_precision == 0)
+	if (flags->b_flag_zero == 1 && flags->b_precision == 0)
 		length = width;
 	if (!(tmp1 = malloc(sizeof(char) * (size + 1))))
 	{
 		free(tmp);
-		*res = -1;
-		return (-1); //erreur
+		return ((*res = -1)); //erreur
 	}
 	if (flags->b_flag_minus == 1)
 	{
