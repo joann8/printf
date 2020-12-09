@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/10 11:46:27 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/03 14:59:47 by jacher           ###   ########.fr       */
+/*   Created: 2020/11/19 14:28:28 by jacher            #+#    #+#             */
+/*   Updated: 2020/12/09 15:41:20 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
+
+void	ft_putstr(char *s)
+{
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 char	*ft_strdup(const char *s)
 {
@@ -27,4 +44,25 @@ char	*ft_strdup(const char *s)
 	}
 	tab[i] = s[i];
 	return (tab);
+}
+
+unsigned int	ft_atoi_printf(const char *str, unsigned int *pos, flag_list *flags)
+{
+	unsigned int		i;
+	unsigned int		res;
+
+	i = 0;
+	res = 0;
+	while (str[i] == '-')
+	{
+		flags->b_flag_minus = 1; 
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - 48;
+		i++;
+	}
+	*pos = *pos + i;
+	return (res);
 }

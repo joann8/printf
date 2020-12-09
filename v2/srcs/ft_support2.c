@@ -6,29 +6,12 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:24:39 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/06 14:45:24 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 15:33:46 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 #include <stdio.h>
-
-/*int				ft_chrn(char *str)
-{
-	int		i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}*/
-
 
 char	*ft_strdup_pf(const char *s, unsigned int start, unsigned int stop)
 {

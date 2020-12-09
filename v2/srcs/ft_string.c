@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 19:13:00 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 14:53:47 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 	}
 //	printf("\n*****width =%u | length = %d\n", width, length);
 	if (!(tmp = malloc(sizeof(char) * (width + 1))))
+	{
+		free(s);
 		return ((*res = 1)); //erreur >> -1?
+	}
 	if (flags->b_flag_minus == 1)
 		ft_string_left(s, tmp, width, length);
 	else
@@ -101,5 +104,6 @@ int		ft_string(va_list args, int *res, flag_list *flags)
 	ft_putstr(tmp);
 	*res = ft_strlen(tmp);
 	free(tmp);
+	free(s);
 	return (1);
 }
