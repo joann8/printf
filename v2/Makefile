@@ -6,7 +6,7 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2020/12/07 16:34:42 by jacher           ###   ########.fr        #
+#    Updated: 2020/12/09 15:40:06 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,7 @@ NAME = libftprintf.a
 INC = includes
 
 SRCS = srcs/ft_putadd.c \
-srcs/ft_strdup.c \
 srcs/ft_itoa_printf.c \
-srcs/ft_strlen.c \
-srcs/ft_putstr.c \
 srcs/ft_support2.c \
 srcs/ft_string.c \
 srcs/ft_char.c \
@@ -28,6 +25,7 @@ srcs/ft_int.c \
 srcs/ft_parsing_help.c \
 srcs/ft_atoi_printf.c \
 srcs/ft_utils.c \
+srcs/ft_utils2.c \
 ft_printf.c
 
 OBJS = ${SRCS:.c=.o}
