@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/08 15:04:18 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 12:32:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void			ft_length(flag_list *flags, va_list args);
 void			flag_parsing_help(flag_list *flags, char *str, unsigned int *index);
 int				flag_parsing(flag_list *flags, char *str, unsigned int *pos, va_list args);
 void			ft_int_left(char *s, char *tmp, unsigned int width, unsigned int length);
+void			ft_int_left_np(char *s, char *tmp, unsigned int width, unsigned int length);
 void			ft_int_right(char *s, char *tmp, unsigned int width, unsigned int length);
 void			ft_int_right_0(char *s, char *tmp, unsigned int width, unsigned int length);
 void			ft_free(arg_list *list, char *str);
