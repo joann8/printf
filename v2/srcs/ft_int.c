@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 21:17:13 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 21:18:18 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 	width = ft_strlen(tmp);
 	length = ft_strlen(tmp);
 	int_format(flags, tmp, &width, &length);
-	if ((tmp1 = create_int(tmp,flags, width, length)) == NULL)
+	if ((tmp1 = create_int(tmp, flags, width, length)) == NULL)
 	{
 		free(tmp);
 		return ((*res = -1));
@@ -74,7 +74,7 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 		if (length > width)
 			flags->b_flag_zero = 1;
 	}*/
-	if (((tmp1 =create_int(tmp, flags, width, length)) == NULL))
+	if (((tmp1 = create_int(tmp, flags, width, length)) == NULL))
 	{
 		free (tmp);
 		return((*res = -1));
