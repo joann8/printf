@@ -6,17 +6,17 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 22:24:24 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 22:32:10 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	 *str_analysis_help(flag_list *flags, unsigned int *i,
+char	*str_analysis_help(flag_list *flags, unsigned int *i,
 							char **str, va_list args)
 {
 	unsigned int	j;
-	unsigned int 	plus;
+	unsigned int	plus;
 	char			*tmp;
 
 	j = *i;
@@ -28,14 +28,16 @@ char	 *str_analysis_help(flag_list *flags, unsigned int *i,
 			return (NULL);
 	tmp = ft_strdup_pf(*str, *i, j);
 	*i = plus + j;
-	return(tmp);
+	if (tmp != NULL)
+		ft_putstr(tmp);
+	return (tmp);
 }
 
 int		str_analysis(char **str, int *res, va_list args, arg_list *list)
 {
 	unsigned int		i;
 	unsigned int		j;
-	char 				*tmp;
+	char				*tmp;
 	flag_list			flags;
 
 	i = 0;
@@ -44,18 +46,17 @@ int		str_analysis(char **str, int *res, va_list args, arg_list *list)
 		flag_init(&flags);
 		if ((tmp = str_analysis_help(&flags, &i, str, args)) == NULL)
 			return (-1);
-		ft_putstr(tmp);
+		//ft_putstr(tmp);
 		*res += ft_strlen(tmp);
 		free(tmp);
 		j = 0;
 		while (list[j].c_init)
 		{
 			if ((*str)[i] == list[j].c_init)
-			{		
-				if (((list[j].f(args, res, &flags)) == -1))
-					return(-1);
-				break;
-			}
+		/*	{*/	if (((list[j].f(args, res, &flags)) == -1))
+					return (-1);
+		//		break ;
+		//	}
 			j++;
 		}
 		if ((*str)[i])
@@ -64,10 +65,10 @@ int		str_analysis(char **str, int *res, va_list args, arg_list *list)
 	return (1);
 }
 
-int ft_printf(const char *input, ...)
+int		ft_printf(const char *input, ...)
 {
 	va_list			args;
-	char 			*str;
+	char			*str;
 	arg_list		*list;
 	int				res;
 
@@ -83,7 +84,5 @@ int ft_printf(const char *input, ...)
 	}
 	va_end(args);
 	free(str);
-//	ft_free(list, str);
-//	free_struct(list);
-	return(res);
+	return (res);
 }
