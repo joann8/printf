@@ -6,11 +6,19 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 18:26:25 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 18:51:57 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
+
+void	display_int(char *tmp1, int *res, char *tmp)
+{	
+	ft_putstr(tmp1);
+	*res += ft_strlen(tmp1);
+	free(tmp1);
+	free(tmp);
+}
 
 int		ft_unsint(va_list args, int *res, flag_list *flags)
 {
@@ -73,10 +81,12 @@ int		ft_unsint(va_list args, int *res, flag_list *flags)
 		else
 			ft_int_right(tmp, tmp1, width, length);
 	}
+	display_int(tmp1, res, tmp);
+	/*
 	ft_putstr(tmp1);
 	*res += ft_strlen(tmp1);
 	free(tmp1);
-	free(tmp);
+	free(tmp);*/
 	return (1);
 }
 
@@ -145,10 +155,13 @@ int		ft_int(va_list args, int *res, flag_list *flags)
 		else
 			ft_int_right(tmp, tmp1, width, length);
 	}
+	display_int(tmp1, res, tmp);
+	/*
 	ft_putstr(tmp1);
 	*res += ft_strlen(tmp1);
 	free(tmp1);
-	free(tmp);
+	free(tmp);*/
 	return (1);
 }
+
 
