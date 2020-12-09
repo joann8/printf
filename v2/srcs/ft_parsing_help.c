@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 13:07:26 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/09 13:36:11 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,49 @@ void	flag_parsing_help(flag_list *flags, char *str, unsigned int *index)
 	unsigned int i;
 
 	i = *index;
-	if (str[i] == '*')
+	/*if (str[i] == '*')
 	{
 		flags->b_width = 1;
 		flags->b_star_width = 1;
 		i++;
-	}	
-	if ((str[i] >= '0' && str[i] <= '9') || str[i] ==  '-')
+	}	*/
+	if ((str[i] >= '0' && str[i] <= '9') || str[i] ==  '-' || str[i] == '*')
 	{
 		flags->b_width = 1;
-		flags->v_width = ft_atoi_printf(str + i, &i, flags);
+		if (str[i] == '*')
+		{
+			flags->b_star_width = 1;
+			i++;
+		}
+		else if (str[i] == '-' && str[i + 1] == '*')
+		{	
+			flags->b_star_width =  1;
+			flags->b_flag_minus = 1; //sure?
+			i++;
+		}
+		else
+			flags->v_width = ft_atoi_printf(str + i, &i, flags);
 	}
 	if (str[i] == '.')
+	{
+		flags->b_precision = 1;
+		flags->b_flag_zero = 0; // pas sure, check pour p?
+		i++;	
+		if (str[i] == '*')
+		{
+			flags->b_star_length = 1;
+			i++;
+		}
+		else if (str[i] == '-' && str[i + 1] == '*')
+		{	
+			flags->b_star_length = 1;
+			//flags->b_minus = 1; //sure?
+			i++;
+		}
+		else
+			flags->v_length = ft_atoi_printf(str + i, &i, flags);
+	}
+	/*if (str[i] == '.')
 	{
 		flags->b_precision = 1;
 		flags->b_flag_zero = 0; // pas sure, check pour p?
@@ -91,7 +122,7 @@ void	flag_parsing_help(flag_list *flags, char *str, unsigned int *index)
 		i++;
 	}	
 	if ((str[i] >= '0' && str[i] <= '9') || str[i] ==  '-')
-		flags->v_length = ft_atoi_printf(str + i, &i, flags);
+		flags->v_length = ft_atoi_printf(str + i, &i, flags);*/
 	*index = i;
 }
 
