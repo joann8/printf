@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 22:47:38 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 11:51:37 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 # define PRINTF_H
 
-#include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct		s_list
 {
@@ -33,7 +33,7 @@ typedef struct		s_list
 typedef struct		a_list
 {
 	char			c_init;
-	int				(*f)(va_list, int *, flag_list*);
+	int				(*f)(va_list, int*, flag_list*);
 }					arg_list;
 
 arg_list		*struct_init(void);
@@ -50,7 +50,7 @@ char			*ft_itoa_int(int n);
 char			*ft_itoa_unsint(unsigned int n);
 char			*ft_itoa_x(unsigned int n, char letter);
 void			fill_table(unsigned int n, char *tab, int size, char letter);
-char			*ft_putadd(void *add);
+char			*ft_putadd(void *add, flag_list *flags);
 char			*ft_strdup_pf(const char *s, unsigned int start,
 								unsigned int stop);
 char 			*ft_strdup(const char *s);

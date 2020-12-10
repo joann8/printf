@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 11:50:18 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 11:49:36 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 11:51:10 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	manage_neg_hexa(long n, unsigned long *nb)
 		*nb = n;
 }
 
-char	*ft_putadd(void *addi, flag_list *flags)
+char	*ft_putadd(void *add, flag_list *flags)
 {
 	long			n;
 	unsigned long	nb;
@@ -66,6 +66,6 @@ char	*ft_putadd(void *addi, flag_list *flags)
 	tab[0] = '0';
 	tab[1] = 'x';
 	manage_neg_hexa(n, &nb);
-	fill_table_hexa(nb, tab, size);
+	fill_table_hexa(nb, tab, size, flags);
 	return (tab);
 }
