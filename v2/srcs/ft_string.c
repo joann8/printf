@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 21:58:54 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 11:08:39 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			string_help(flag_list *flags, unsigned int *width,
 void			display_string(char *tmp, int *res, char *s, int bol)
 {
 	ft_putstr(tmp);
-	*res = ft_strlen(tmp);
+	*res += ft_strlen(tmp);
 	free(tmp);
 	if (bol == 1)
 		free(s);
