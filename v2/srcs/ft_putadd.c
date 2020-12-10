@@ -6,20 +6,23 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 11:50:18 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 11:45:12 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 11:49:36 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 
-void	fill_table_hexa(unsigned long n, char *tab, int size)
+void	fill_table_hexa(unsigned long n, char *tab, int size, flag_list *flags)
 {
 	char			*base;
 	unsigned int	i;
 
 	if (n == 0)
 	{
-		tab[2] = '\0';
+		if (flags->b_precision == 0)
+			tab[2] = '0';	
+		if (flags->b_precision == 1)
+			tab[2] = '\0';
 		return ;
 	}
 	base = "0123456789abcdef";
@@ -40,7 +43,7 @@ void	manage_neg_hexa(long n, unsigned long *nb)
 		*nb = n;
 }
 
-char	*ft_putadd(void *add)
+char	*ft_putadd(void *addi, flag_list *flags)
 {
 	long			n;
 	unsigned long	nb;
