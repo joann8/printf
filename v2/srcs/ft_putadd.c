@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 11:50:18 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 11:36:30 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 11:45:12 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	fill_table_hexa(unsigned long n, char *tab, int size)
 
 	if (n == 0)
 	{
-		tab[2] = '0';
+		tab[2] = '\0';
 		return ;
 	}
 	base = "0123456789abcdef";
