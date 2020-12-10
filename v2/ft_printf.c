@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 22:33:06 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 13:11:03 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ int		ft_printf(const char *input, ...)
 	}
 	va_end(args);
 	free(str);
+	free(list);
 	return (res);
 }
