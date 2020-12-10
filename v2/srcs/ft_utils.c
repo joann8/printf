@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 15:41:38 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:47:27 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,30 @@
 
 int	look_for_function(char c, va_list args, int *res, t_flag *flags)
 {
+	int bol;
+
+	bol = 0;
 	if (c == 's')
-		ft_string(args, res, flags);
+		bol = ft_string(args, res, flags);
 	else if (c == 'd')
-		ft_int(args, res, flags);
+		bol = ft_int(args, res, flags);
 	else if (c == 'i')
-		ft_int(args, res, flags);
+		bol = ft_int(args, res, flags);
 	else if (c == 'c')
-		ft_char(args, res, flags);
+		bol = ft_char(args, res, flags);
 	else if (c == '%')
-		ft_percent(args, res, flags);
+		bol = ft_percent(args, res, flags);
 	else if (c == 'u')
-		ft_unsint(args, res, flags);
+		bol = ft_unsint(args, res, flags);
 	else if (c == 'x')
-		ft_x(args, res, flags);
+		bol = ft_x(args, res, flags);
 	else if (c == 'X')
-		ft_bigx(args, res, flags);
+		bol = ft_bigx(args, res, flags);
 	else if (c == 'p')
-		ft_p(args, res, flags);
+		bol = ft_p(args, res, flags);
 	else
 		return (-1);
-	return (0);
+	return (bol);
 }
 
 int			is_a_type(char c)
