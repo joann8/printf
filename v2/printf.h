@@ -6,13 +6,12 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 11:51:37 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 12:07:58 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
-
-# define PRINTF_H
+#define PRINTF_H
 
 # include <stdarg.h>
 # include <stdlib.h>

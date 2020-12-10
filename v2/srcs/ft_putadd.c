@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 11:50:18 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 11:51:10 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 11:54:11 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	fill_table_hexa(unsigned long n, char *tab, int size, flag_list *flags)
 	if (n == 0)
 	{
 		if (flags->b_precision == 0)
-			tab[2] = '0';	
+			tab[2] = '0';
 		if (flags->b_precision == 1)
 			tab[2] = '\0';
 		return ;
