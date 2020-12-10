@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:56:58 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:42:53 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pf.h"
-
-char	*str_analysis_help(flag_list *flags, unsigned int *i,
+#include <stdio.h>
+char	*str_analysis_help(t_flag *flags, unsigned int *i,
 							char **str, va_list args)
 {
 	unsigned int	j;
@@ -33,12 +33,12 @@ char	*str_analysis_help(flag_list *flags, unsigned int *i,
 	return (tmp);
 }
 
-int		str_analysis(char **str, int *res, va_list args, arg_list *list)
+int		str_analysis(char **str, int *res, va_list args)
 {
 	unsigned int		i;
 	unsigned int		j;
 	char				*tmp;
-	flag_list			flags;
+	t_flag				flags;
 
 	i = 0;
 	while ((*str)[i] != '\0')
@@ -49,13 +49,17 @@ int		str_analysis(char **str, int *res, va_list args, arg_list *list)
 		*res += ft_strlen(tmp);
 		free(tmp);
 		j = 0;
-		while (list[j].c_init)
+	//check str[i] == la lettre
+	//	printf("str[%d] == %c\n", i, (*str)[i]);
+		if ((look_for_function((*str)[i], args, res, &flags) == -1))
+			return (-1);
+		/*while (list[j].c_init)
 		{
 			if ((*str)[i] == list[j].c_init)
 				if (((list[j].f(args, res, &flags)) == -1))
 					return (-1);
 			j++;
-		}
+		}*/
 		if ((*str)[i])
 			i += 1;
 	}
@@ -66,14 +70,12 @@ int		ft_printf(const char *input, ...)
 {
 	va_list			args;
 	char			*str;
-	arg_list		*list;
 	int				res;
 
 	res = 0;
-	list = struct_init();
 	str = ft_strdup(input);
 	va_start(args, input);
-	if ((str_analysis(&str, &res, args, list) == -1))
+	if ((str_analysis(&str, &res, args) == -1))
 	{
 		free(str);
 		va_end(args);
@@ -81,6 +83,5 @@ int		ft_printf(const char *input, ...)
 	}
 	va_end(args);
 	free(str);
-	free(list);
 	return (res);
 }

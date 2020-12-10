@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:52:35 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:18:50 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			free_p(char *s1, char *s2)
 		free(s2);
 }
 
-int				ft_p(va_list args, int *res, flag_list *flags)
+int				ft_p(va_list args, int *res, t_flag *flags)
 {
 	void			*ptr;
 	char			*tmp;

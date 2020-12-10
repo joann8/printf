@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:52:53 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:19:57 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
 
-int		ft_x(va_list args, int *res, flag_list *flags)
+int		ft_x(va_list args, int *res, t_flag *flags)
 {
 	unsigned int	d;
 	char			*tmp;
@@ -37,7 +37,7 @@ int		ft_x(va_list args, int *res, flag_list *flags)
 	return (1);
 }
 
-int		ft_bigx(va_list args, int *res, flag_list *flags)
+int		ft_bigx(va_list args, int *res, t_flag *flags)
 {
 	unsigned int	d;
 	char			*tmp;

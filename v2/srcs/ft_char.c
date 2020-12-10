@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:52:43 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:19:25 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_char_left(char car, char *c, unsigned int width)
 	}
 }
 
-void	display_char(char car, unsigned int size, flag_list *flags, char *c)
+void	display_char(char car, unsigned int size, t_flag *flags, char *c)
 {
 	if (car == '\0')
 	{
@@ -65,7 +65,7 @@ void	display_c(char *c, int *res)
 	free(c);
 }
 
-int		ft_char(va_list args, int *res, flag_list *flags)
+int		ft_char(va_list args, int *res, t_flag *flags)
 {
 	char			car;
 	char			*c;

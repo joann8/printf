@@ -6,38 +6,35 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:54:50 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:41:38 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
 
-arg_list	*struct_init(void)
+int	look_for_function(char c, va_list args, int *res, t_flag *flags)
 {
-	arg_list	*list;
-
-	if (!(list = malloc(sizeof(arg_list) * 10)))
-		return (NULL);
-	list[9].c_init = '\0';
-	list[0].c_init = 's';
-	list[0].f = &ft_string;
-	list[1].c_init = 'd';
-	list[1].f = &ft_int;
-	list[2].c_init = 'i';
-	list[2].f = &ft_int;
-	list[3].c_init = 'c';
-	list[3].f = &ft_char;
-	list[4].c_init = '%';
-	list[4].f = &ft_percent;
-	list[5].c_init = 'u';
-	list[5].f = &ft_unsint;
-	list[6].c_init = 'x';
-	list[6].f = &ft_x;
-	list[7].c_init = 'X';
-	list[7].f = &ft_bigx;
-	list[8].c_init = 'p';
-	list[8].f = &ft_p;
-	return (list);
+	if (c == 's')
+		ft_string(args, res, flags);
+	else if (c == 'd')
+		ft_int(args, res, flags);
+	else if (c == 'i')
+		ft_int(args, res, flags);
+	else if (c == 'c')
+		ft_char(args, res, flags);
+	else if (c == '%')
+		ft_percent(args, res, flags);
+	else if (c == 'u')
+		ft_unsint(args, res, flags);
+	else if (c == 'x')
+		ft_x(args, res, flags);
+	else if (c == 'X')
+		ft_bigx(args, res, flags);
+	else if (c == 'p')
+		ft_p(args, res, flags);
+	else
+		return (-1);
+	return (0);
 }
 
 int			is_a_type(char c)
@@ -49,7 +46,7 @@ int			is_a_type(char c)
 		return (0);
 }
 
-void		flag_init(flag_list *flags)
+void		flag_init(t_flag *flags)
 {
 	flags->b_flag_zero = 0;
 	flags->b_flag_minus = 0;

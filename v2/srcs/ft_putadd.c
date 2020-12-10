@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 11:50:18 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:54:04 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:23:19 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
 
-void	fill_table_hexa(unsigned long n, char *tab, int size, flag_list *flags)
+void	fill_table_hexa(unsigned long n, char *tab, int size, t_flag *flags)
 {
 	char			*base;
 	unsigned int	i;
@@ -43,7 +43,7 @@ void	manage_neg_hexa(long n, unsigned long *nb)
 		*nb = n;
 }
 
-char	*ft_putadd(void *add, flag_list *flags)
+char	*ft_putadd(void *add, t_flag *flags)
 {
 	long			n;
 	unsigned long	nb;

@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:53:56 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:22:53 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
 
-void	display_percent(char car, unsigned int size, flag_list *flags, char *c)
+void	display_percent(char car, unsigned int size, t_flag *flags, char *c)
 {
 	if (flags->b_flag_minus == 0)
 	{
@@ -25,7 +25,7 @@ void	display_percent(char car, unsigned int size, flag_list *flags, char *c)
 		ft_char_left(car, c, size);
 }
 
-int		ft_percent(va_list args, int *res, flag_list *flags)
+int		ft_percent(va_list args, int *res, t_flag *flags)
 {
 	char			car;
 	char			*c;

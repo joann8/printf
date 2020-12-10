@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:53:48 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:34:24 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
 
-void	ft_width(flag_list *flags, va_list args)
+void	ft_width(t_flag *flags, va_list args)
 {
 	int				s_tmp;
 	unsigned int	width;
@@ -30,7 +30,7 @@ void	ft_width(flag_list *flags, va_list args)
 	return ;
 }
 
-void	ft_length(flag_list *flags, va_list args)
+void	ft_length(t_flag *flags, va_list args)
 {
 	int				s_tmp;
 	unsigned int	length;
@@ -50,7 +50,7 @@ void	ft_length(flag_list *flags, va_list args)
 	return ;
 }
 
-void	flag_parsing_width(flag_list *flags, char *str, unsigned int *index)
+void	flag_parsing_width(t_flag *flags, char *str, unsigned int *index)
 {
 	unsigned int i;
 
@@ -72,7 +72,7 @@ void	flag_parsing_width(flag_list *flags, char *str, unsigned int *index)
 	*index = i;
 }
 
-void	flag_parsing_precision(flag_list *flags, char *str, unsigned int *index)
+void	flag_parsing_precision(t_flag *flags, char *str, unsigned int *index)
 {
 	unsigned int i;
 
@@ -95,7 +95,7 @@ void	flag_parsing_precision(flag_list *flags, char *str, unsigned int *index)
 	*index = i;
 }
 
-int		flag_parsing(flag_list *flags, char *str, unsigned int *pos,
+int		flag_parsing(t_flag *flags, char *str, unsigned int *pos,
 						va_list args)
 {
 	unsigned int i;

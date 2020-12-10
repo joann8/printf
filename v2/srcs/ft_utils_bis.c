@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils2.c                                        :+:      :+:    :+:   */
+/*   ft_utils_bis.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:28 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:54:44 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:24:23 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char			*ft_strdup_pf(const char *s, unsigned int start,
 }
 
 unsigned int	ft_atoi_printf(const char *str, unsigned int *pos,
-								flag_list *flags)
+								t_flag *flags)
 {
 	unsigned int		i;
 	unsigned int		res;

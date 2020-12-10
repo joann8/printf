@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:53:12 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:33:44 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	display_int(char *tmp1, int *res, char *tmp)
 	free(tmp);
 }
 
-int		manage_precision_0(flag_list *flags, char *tmp)
+int		manage_precision_0(t_flag *flags, char *tmp)
 {
 	if (flags->b_width == 1)
 	{
@@ -34,7 +34,7 @@ int		manage_precision_0(flag_list *flags, char *tmp)
 	}
 }
 
-void	int_format(flag_list *flags, char *tmp, unsigned int *width,
+void	int_format(t_flag *flags, char *tmp, unsigned int *width,
 						unsigned int *length)
 {
 	*width = ft_strlen(tmp);
@@ -62,7 +62,7 @@ void	change_size(unsigned int *size, char *tmp, unsigned int *width,
 	}
 }
 
-char	*create_int(char *tmp, flag_list *flags, unsigned int width,
+char	*create_int(char *tmp, t_flag *flags, unsigned int width,
 						unsigned int length)
 {
 	char			*tmp1;

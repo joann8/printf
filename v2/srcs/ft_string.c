@@ -6,17 +6,17 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:54:16 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:23:57 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
 
-void			string_help(flag_list *flags, unsigned int *width,
+void			string_help(t_flag *flags, unsigned int *width,
 							unsigned int *length, char *s)
 {
 	*width = ft_strlen(s);
-	if (flags->b_width == 1) 
+	if (flags->b_width == 1)
 		*width = flags->v_width;
 	*length = ft_strlen(s);
 	if (flags->b_precision == 1)
@@ -46,7 +46,7 @@ void			display_string(char *tmp, int *res, char *s, int bol)
 		free(s);
 }
 
-char			*string_null(int *bol, flag_list *flags)
+char			*string_null(int *bol, t_flag *flags)
 {
 	char *s;
 
@@ -57,7 +57,7 @@ char			*string_null(int *bol, flag_list *flags)
 	return (s);
 }
 
-int				ft_string(va_list args, int *res, flag_list *flags)
+int				ft_string(va_list args, int *res, t_flag *flags)
 {
 	char			*s;
 	char			*tmp;
