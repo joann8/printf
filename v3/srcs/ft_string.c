@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 15:23:57 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 16:07:44 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int				ft_string(va_list args, int *res, t_flag *flags)
 		return ((*res = -1));
 	s = va_arg(args, char *);
 	if (s == NULL)
-		s = string_null(&bol, flags);
+		if((s = string_null(&bol, flags)) == NULL)
+			return (-1);
 	string_help(flags, &width, &length, s);
 	if (!(tmp = malloc(sizeof(char) * (width + 1))))
 	{
