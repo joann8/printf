@@ -6,20 +6,18 @@
 #    By: jacher <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/11 09:41:42 by jacher            #+#    #+#              #
-#    Updated: 2020/12/09 19:27:10 by jacher           ###   ########.fr        #
+#    Updated: 2020/12/10 13:07:35 by jacher           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-
-INC = includes
 
 SRCS = srcs/ft_add.c \
 srcs/ft_char.c \
 srcs/ft_hexa.c \
 srcs/ft_int.c \
 srcs/ft_int_utils.c \
-srcs/ft_int_utils2.c \
+srcs/ft_int_utils_bis.c \
 srcs/ft_itoa_printf.c \
 srcs/ft_parsing_help.c \
 srcs/ft_percent.c \
@@ -43,9 +41,9 @@ LIB	= ar -rcs
 RM = rm -f
 
 .c.o:
-	${CC} ${FLAGS} -I${INC} -c $< -o ${<:.c=.o}
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}: ${OBJS} ${INC}/libft.h printf.h 
+${NAME}: ${OBJS} printf.h 
 	${LIB} ${NAME} ${OBJS}		
 	ranlib ${NAME}
 

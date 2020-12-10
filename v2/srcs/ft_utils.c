@@ -6,19 +6,11 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 12:17:02 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 12:23:19 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
-/*
-void		ft_free(arg_list *list, char *str)
-{
-	if (str)
-		free(str);
-	if (list)
-		free(list);
-}*/
 
 arg_list	*struct_init(void)
 {

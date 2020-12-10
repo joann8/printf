@@ -6,13 +6,13 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 11:52:11 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 12:29:37 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printf.h"
 
-static void		ft_add_right(char *tmp, char *tmp1, unsigned int width)
+void			ft_add_right(char *tmp, char *tmp1, unsigned int width)
 {
 	unsigned int i;
 	unsigned int j;
@@ -32,7 +32,7 @@ static void		ft_add_right(char *tmp, char *tmp1, unsigned int width)
 	}
 }
 
-static void		ft_add_left(char *tmp, char *tmp1, unsigned int width)
+void			ft_add_left(char *tmp, char *tmp1, unsigned int width)
 {
 	unsigned int i;
 
@@ -50,7 +50,7 @@ static void		ft_add_left(char *tmp, char *tmp1, unsigned int width)
 	}
 }
 
-static void		free_p(char *s1, char *s2)
+void			free_p(char *s1, char *s2)
 {
 	if (s1)
 		free(s1);
