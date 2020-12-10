@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:36:09 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 15:47:27 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 15:50:09 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	look_for_function(char c, va_list args, int *res, t_flag *flags)
 		bol = ft_bigx(args, res, flags);
 	else if (c == 'p')
 		bol = ft_p(args, res, flags);
-	else
-		return (-1);
 	return (bol);
 }
 
