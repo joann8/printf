@@ -6,11 +6,11 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:09:53 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 12:43:03 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 13:53:39 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf.h"
+#include "../pf.h"
 
 void			man_neg(int n, unsigned int *nbr, unsigned int *size, int mod)
 {

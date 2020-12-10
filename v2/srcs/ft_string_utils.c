@@ -6,11 +6,11 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:26:52 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 13:54:30 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf.h"
+#include "../pf.h"
 
 void			ft_string_left(char *s, char *tmp, unsigned int width,
 								unsigned int length)

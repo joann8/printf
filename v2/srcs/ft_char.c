@@ -6,11 +6,11 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 17:53:33 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 13:52:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf.h"
+#include "../pf.h"
 
 void	ft_char_right(char car, char *c, unsigned int width, int mod)
 {

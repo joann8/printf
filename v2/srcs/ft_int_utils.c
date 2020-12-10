@@ -6,11 +6,11 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/09 18:48:17 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 13:53:28 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf.h"
+#include "../pf.h"
 
 void		manage_negative(char *s, char *tmp, unsigned int *dif,
 								unsigned int *i)

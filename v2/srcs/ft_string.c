@@ -6,11 +6,11 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:40:11 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 13:54:16 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf.h"
+#include "../pf.h"
 
 void			string_help(flag_list *flags, unsigned int *width,
 							unsigned int *length, char *s)
