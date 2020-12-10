@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:36:29 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/10 13:40:11 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			string_help(flag_list *flags, unsigned int *width,
 	if (flags->b_precision == 1)
 	{
 		*length = flags->v_length;
-		if (*length > ft_strlen(s))
+		if (*length >= ft_strlen(s))
 		{
 			if (*width < ft_strlen(s))
 				*width = ft_strlen(s);
