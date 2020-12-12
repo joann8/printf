@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 18:24:54 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 19:09:41 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void				ft_putstr(char *s);
 size_t				ft_strlen(const char *str);
 unsigned int		ft_strlen_int(const char *str);
 unsigned int		ft_atoi_printf(const char *str, unsigned int *pos,
-									t_flag *flags);
+									t_flag *flags, int mod);
 int					ft_char(va_list args, int *res, t_flag *flags);
 void				ft_char_right(char car, char *c, unsigned int width,
 									int mod);

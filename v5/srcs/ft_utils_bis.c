@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:28 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 13:55:26 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 19:07:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,6 @@ size_t			ft_strlen(const char *str)
 	i = 0;
 	while (str[i])
 		i++;
-	return (i);
-}
-
-unsigned int			ft_strlen_int(const char *str)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	if (str[0] == '-')
-		i--;
 	return (i);
 }
 
@@ -77,7 +65,7 @@ char			*ft_strdup_pf(const char *s, unsigned int start,
 }
 
 unsigned int	ft_atoi_printf(const char *str, unsigned int *pos,
-								t_flag *flags)
+								t_flag *flags, int mod)
 {
 	unsigned int		i;
 	unsigned int		res;
@@ -86,9 +74,17 @@ unsigned int	ft_atoi_printf(const char *str, unsigned int *pos,
 	res = 0;
 	while (str[i] == '-')
 	{
-		flags->b_flag_minus = 1;
-		flags->b_flag_zero = 0; //ajout
-		i++;
+		if (mod == 1)
+		{
+			flags->b_flag_minus = 1;
+			flags->b_flag_zero = 0; //ajout
+			i++;
+		}
+		if (mod == 2)
+		{
+			flags->b_precision = 0;
+			return (0);
+		}
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
