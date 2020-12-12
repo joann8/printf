@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 20:16:42 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 21:00:39 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int					ft_bigx(va_list args, int *res, t_flag *flags);
 int					ft_int(va_list args, int *res, t_flag *flags);
 int					ft_unsint(va_list args, int *res, t_flag *flags);
 int					manage_precision_0(t_flag *flags, char *tmp);
-void				int_format(t_flag *flags, char *tmp, unsigned int *width,
+void				int_format(t_flag *flags, unsigned int *width,
 								unsigned int *length);
 void				create_int_minus(char *tmp, t_flag *flags, unsigned int width,
 									unsigned int length);
