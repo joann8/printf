@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 22:12:22 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 22:14:17 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void			ft_add_left(char *tmp, unsigned int width)
 
 	i = 0;
 	ft_putstr(tmp);
-	i = ft_strlen(tmp) - 1;
+	i = ft_strlen(tmp);
 	while (i < width)
 	{
 		write(1, " ", 1);
