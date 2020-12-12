@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 18:26:05 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 18:35:06 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		manage_precision_0(t_flag *flags, char *tmp) //  a verifier
 void	int_format(t_flag *flags, char *tmp, unsigned int *width,
 						unsigned int *length)
 {
+	(void)tmp;
+
 	if (flags->b_precision == 1 && *length < flags->v_length)
 		*length = flags->v_length;
 	if (flags->b_width == 1 && *width < flags->v_width)
