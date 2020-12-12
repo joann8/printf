@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 20:30:33 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 20:32:04 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char			*string_null(int *bol, t_flag *flags)
 	return (s);
 }
 
-void	display_strinf(t_flag *flags, char *tmp_p, unsigned int width)
+void			display_string(t_flag *flags, char *tmp_p, unsigned int width)
 {
 	if (flags->b_flag_minus == 1)
 	{
