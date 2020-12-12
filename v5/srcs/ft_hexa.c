@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 21:03:26 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 21:59:01 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int		ft_x(va_list args, int *res, t_flag *flags)
 	int_format(flags, &width, &length);
 	*res += width;
 	if (flags->b_flag_minus == 1)
-		create_int_minus(tmp, flags, width, length);
+		int_minus(tmp, flags, width, length);
 	else
-		create_int_right(tmp, flags, width, length);
+		int_right(tmp, flags, width, length);
 	free(tmp);
 	return (1);
 }
@@ -55,9 +55,9 @@ int		ft_bigx(va_list args, int *res, t_flag *flags)
 	int_format(flags, &width, &length);
 	*res += width;
 	if (flags->b_flag_minus == 1)
-		create_int_minus(tmp, flags, width, length);
+		int_minus(tmp, flags, width, length);
 	else
-		create_int_right(tmp, flags, width, length);
+		int_right(tmp, flags, width, length);
 	free(tmp);
 	return (1);
 }

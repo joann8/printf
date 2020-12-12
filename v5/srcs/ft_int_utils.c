@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 21:15:46 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 22:02:45 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	int_format(t_flag *flags, unsigned int *width, unsigned int *length)
 		*width = *length + flags->b_intneg;
 }
 
-void	create_int_minus(char *tmp, t_flag *flags, unsigned int width,
+void	int_minus(char *tmp, t_flag *flags, unsigned int width,
 							unsigned int length)
 {
 	if (flags->b_intneg == 1)
@@ -59,7 +59,7 @@ void	create_int_minus(char *tmp, t_flag *flags, unsigned int width,
 	}
 }
 
-void	create_int_right(char *tmp, t_flag *flags, unsigned int width,
+void	int_right(char *tmp, t_flag *flags, unsigned int width,
 							unsigned int length)
 {
 	if (flags->b_flag_zero == 0)

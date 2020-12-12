@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 21:51:55 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 22:01:22 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			ft_add_right(char *tmp, unsigned int width)
 	i = 0;
 	while (i < width - ft_strlen(tmp))
 	{
-		write(1, " ", 1);;
+		write(1, " ", 1);
 		i++;
 	}
 	ft_putstr(tmp);
@@ -34,7 +34,7 @@ void			ft_add_left(char *tmp, unsigned int width)
 	ft_putstr(tmp);
 	while (i < width)
 	{
-		tmp1[i] = ' ';
+		write(1, " ", 1);
 		i++;
 	}
 }
@@ -43,7 +43,6 @@ int				ft_p(va_list args, int *res, t_flag *flags)
 {
 	void			*ptr;
 	char			*tmp;
-	char			*tmp1;
 	unsigned int	width;
 
 	ptr = va_arg(args, void*);
