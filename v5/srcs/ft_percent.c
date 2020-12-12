@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 15:22:53 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 18:30:19 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int		ft_percent(va_list args, int *res, t_flag *flags)
 
 	(void)args;
 	size = 1;
-	if (flags->b_precision == 1)
-		return ((*res = -1));
 	if (flags->b_width == 1 && flags->v_width > 1)
 		size = flags->v_width;
 	if (!(c = malloc(sizeof(char) * (size + 1))))

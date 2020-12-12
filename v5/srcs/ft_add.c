@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 19:27:00 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 18:30:47 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ int				ft_p(va_list args, int *res, t_flag *flags)
 	char			*tmp1;
 	unsigned int	width;
 
-	if (flags->b_flag_zero == 1)
-		return ((*res = -1));
 	ptr = va_arg(args, void*);
 	if ((tmp = ft_putadd(ptr, flags)) == NULL)
 		return (-1);
