@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 20:20:01 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 20:30:33 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,29 +44,8 @@ char			*string_null(int *bol, t_flag *flags)
 	return (s);
 }
 
-int				ft_string(va_list args, int *res, t_flag *flags)
+void	display_strinf(t_flag *flags, char *tmp_p, unsigned int width)
 {
-	char			*s;
-	char			*tmp_p;
-	unsigned int	width;
-	int				bol;
-
-	bol = 0;
-	s = va_arg(args, char *);
-	if (s == NULL && ((s = string_null(&bol, flags)) == NULL))
-		return (-1);
-	if ((tmp_p = string_precision(s, flags)) == NULL)
-	{
-		if (bol == 1)
-			free(s);
-		return ((*res = -1));
-	}
-	width = ft_strlen(s);
-	if (flags->b_width == 1)
-		width = flags->v_width;
-	else if (flags->b_precision == 1 && flags->v_length < width)
-		width = flags->v_length;
-	*res += width;
 	if (flags->b_flag_minus == 1)
 	{
 		ft_putstr(tmp_p);
@@ -85,6 +64,32 @@ int				ft_string(va_list args, int *res, t_flag *flags)
 		}
 		ft_putstr(tmp_p);
 	}
+}
+
+int				ft_string(va_list args, int *res, t_flag *flags)
+{
+	char			*s;
+	char			*tmp_p;
+	unsigned int	width;
+	int				bol;
+
+	bol = 0;
+	s = va_arg(args, char *);
+	if (s == NULL && ((s = string_null(&bol, flags)) == NULL))
+		return (-1);
+	if ((tmp_p = string_precision(s, flags)) == NULL)
+	{
+		if (bol == 1)
+			free(s);
+		return ((*res = -1));
+	}
+	width = ft_strlen(s);
+	if (flags->b_width == 1 && width < flags->v_width)
+		width = flags->v_width;
+	else if (flags->b_precision == 1 && flags->v_length < width)
+		width = flags->v_length;
+	*res += width;
+	display_string(flags, tmp_p, width);	
 	free (tmp_p);
 	if (bol == 1)
 		free(s);
