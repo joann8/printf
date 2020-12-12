@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 19:10:08 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 19:39:04 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_length(t_flag *flags, va_list args)
 		flags->v_length = 0;
 	}
 	else
-		flags->v_length = length;
+		flags->v_length = s_tmp;
 	return ;
 }
 
@@ -78,18 +78,16 @@ void	flag_parsing_precision(t_flag *flags, char *str, unsigned int *index)
 
 	i = *index;
 	flags->b_precision = 1;
-//	flags->b_flag_zero = 0; to delete because not always true
 	i++;
 	if (str[i] == '*')
 	{
 		flags->b_star_length = 1;
 		i++;
 	}
-	else if (str[i] == '-' && str[i + 1] == '*')
+	else if (str[i] == '-')
 	{
-		flags->b_star_length = 1;
-		//flags->b_flag_minus = 1; // sure ? a checker
-		//flags->b_flag_zero = 0;// ajout
+		flags->b_precision = 0;
+		flags->v_length = 0;
 		i++;
 	}
 	else

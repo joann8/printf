@@ -6,12 +6,12 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 18:38:55 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 19:39:32 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
-
+#include <stdio.h>
 int		manage_precision_0(t_flag *flags, char *tmp) //  a verifier
 {
 	if (flags->b_width == 0)
