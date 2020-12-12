@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 18:35:06 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 18:38:55 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int		manage_precision_0(t_flag *flags, char *tmp) //  a verifier
 		free(tmp);
 		return (1);
 	}
-	return (0);
+	else
+	{
+		tmp[0] = ' ';
+		return (0);
+	}
 }
 
 void	int_format(t_flag *flags, char *tmp, unsigned int *width,
