@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 20:13:31 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 20:20:01 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int				ft_string(va_list args, int *res, t_flag *flags)
 		width = flags->v_width;
 	else if (flags->b_precision == 1 && flags->v_length < width)
 		width = flags->v_length;
+	*res += width;
 	if (flags->b_flag_minus == 1)
 	{
 		ft_putstr(tmp_p);
@@ -84,7 +85,6 @@ int				ft_string(va_list args, int *res, t_flag *flags)
 		}
 		ft_putstr(tmp_p);
 	}
-	*res += width;
 	free (tmp_p);
 	if (bol == 1)
 		free(s);
