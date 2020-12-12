@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 19:09:41 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 20:16:42 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ char				*ft_strdup_pf(const char *s, unsigned int start,
 char				*ft_strdup(const char *s);
 void				ft_putstr(char *s);
 size_t				ft_strlen(const char *str);
-unsigned int		ft_strlen_int(const char *str);
 unsigned int		ft_atoi_printf(const char *str, unsigned int *pos,
 									t_flag *flags, int mod);
 int					ft_char(va_list args, int *res, t_flag *flags);
@@ -61,8 +60,6 @@ int					ft_unsint(va_list args, int *res, t_flag *flags);
 int					manage_precision_0(t_flag *flags, char *tmp);
 void				int_format(t_flag *flags, char *tmp, unsigned int *width,
 								unsigned int *length);
-void				change_size(unsigned int *size, char *tmp,
-									unsigned int *width, unsigned int *length);
 void				create_int_minus(char *tmp, t_flag *flags, unsigned int width,
 									unsigned int length);
 void				create_int_right(char *tmp, t_flag *flags, unsigned int width,
@@ -90,13 +87,6 @@ void				fill_table_hexa(unsigned long n, char *tab, int size,
 void				manage_neg_hexa(long n, unsigned long *nb);
 char				*ft_putadd(void *add, t_flag *flags);
 int					ft_string(va_list args, int *res, t_flag *flags);
-void				display_string(char *tmp, int *res, char *s, int bol);
-void				string_help(t_flag *flags, unsigned int *width,
-									unsigned int *length, char *s);
 char				*string_null(int *bol, t_flag *flags);
-void				ft_string_left(char *s, char *tmp, unsigned int width,
-								unsigned int length);
-void				ft_string_right(char *s, char *tmp, unsigned int width,
-								unsigned int length);
-
+char				*string_precision(char *s, t_flag *flags);
 #endif
