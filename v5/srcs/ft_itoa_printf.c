@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 12:09:53 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 20:43:04 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 20:45:51 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 void			man_neg(int n, unsigned int *nbr, unsigned int *size, int mod)
 {
-	if (n <= 0)
-	{
-		if (mod == 0)
-			*size = *size + 1;
+	if (n < 0)
 		*nbr = -n;
-	}
 	else
 		*nbr = n;
 	if (mod == 0)
@@ -39,6 +35,8 @@ char			*ft_itoa_int(int n)
 	char			*tab;
 
 	size = 0;
+	if (n == 0)
+		size++;
 	man_neg(n, &nbr, &size, 0);
 	if (!(tab = malloc(sizeof(char) * (size + 1))))
 		return (NULL);
