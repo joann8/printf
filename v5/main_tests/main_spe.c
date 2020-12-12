@@ -26,12 +26,42 @@ int main()
 	ptr2 = &c1;
 	d1 = -12;
 	d2 = -3456;
-	
+
+
+	printf("pf %0.5d.\n", -2732);
+	ft_printf("ff %0.5d.\n", -2732);
+	printf("pf %010.5d.\n", -2732);
+	ft_printf("ff %010.5d.\n", -2732);
+	printf("pf %*.5d.\n", 15, 2732);
+	ft_printf("ff %*.5d.\n", 15, 2732);
+	printf("pf %*.5d.\n", -15, 2732);
+	ft_printf("ff %*.5d.\n", -15, 2732);
+	printf("pf %5.*d.\n", 15, 2732);
+	ft_printf("ff %5.*d.\n", 15, 2732);
+	printf("pf %05.*d.\n", -15, 2732);
+	ft_printf("ff %05.*d.\n", -15, 2732);
+
+
 	printf("***** new errors ******\n");
 	printf("pf %.c\n", 'a');
 	ft_printf("my %.c\n", 'a');
-	printf("pf %.5d\n", -2732);
-	ft_printf("my %.5d\n", -2732);
+	printf("pf %.5d.\n", -2732);
+	ft_printf("my %.5d.\n", -2732);
+	printf("pf %10.5d.\n", -2732);
+	ft_printf("my %10.5d.\n", -2732);
+	printf("pf %.d.\n", -2732);
+	ft_printf("my %.d.\n", -2732);
+	printf("pf %10.d.\n", -2732);
+	ft_printf("my %10.d.\n", -2732);
+	printf("pf %-.5d.\n", -2732);
+	ft_printf("my %-.5d.\n", -2732);
+	printf("pf %-10.5d.\n", -2732);
+	ft_printf("my %-10.5d.\n", -2732);
+	printf("pf %-.d.\n", -2732);
+	ft_printf("my %-.d.\n", -2732);
+	printf("pf %-10.d.\n", -2732);
+	ft_printf("my %-10.d.\n", -2732);
+
 	printf("***** new errors ******\n");
 	
 	
@@ -107,7 +137,7 @@ int main()
 
 
 //TEST INT DETAILLE
-/*	
+	
 	printf("\n\n1.pf | %.*d\n", -3, 1234);	
 	ft_printf("1.my | %.*d", -1, 1234);
 	
@@ -121,12 +151,12 @@ int main()
 	printf("\n\n2.pf | %05d | %02d.\n", d2, d2);	
 	ft_printf("2.my | %05d | %02d.", d2, d2);
 	
-	printf("\n\n3.pf | %-05d | %-02d.\n", d1, d1);	
+/*	printf("\n\n3.pf | %-05d | %-02d.\n", d1, d1);	
 	ft_printf("3.my | %-05d | %-02d.", d1, d1);
 	printf("\n\n3.pf | %-05d | %-02d.\n", d2, d2);	
 	ft_printf("3.my | %-05d | %-02d.", d2, d2);*/
 		
-/*	printf("\n\n4.pf | %-5d | %-2d.\n", d1, d1);	
+	printf("\n\n4.pf | %-5d | %-2d.\n", d1, d1);	
 	ft_printf("4.my | %-5d | %-2d.", d1, d1);
 	printf("\n\n4.pf | %-5d | %-2d.\n", d2, d2);	
 	ft_printf("4.my | %-5d | %-2d.", d2, d2);
@@ -163,7 +193,7 @@ int main()
 	printf("\n\n8.pf | %8.6d | %6.8d.\n", d2, d2);	
 	ft_printf("8.my | %8.6d | %6.8d.", d2, d2);
 
-*/
+
 //TEST STRING DETAILLEE
 /*	printf("\n\n1.pf | %s.\n",s2);	
 	ft_printf("1.my | %s.", s2);

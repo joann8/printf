@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 19:27:58 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 18:24:54 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct		s_struct
 	unsigned int	v_width;
 	int				b_star_width;
 	int				b_precision;
+	int				b_intneg;
 	unsigned int	v_length;
 	int				b_star_length;
 }					t_flag;
@@ -37,6 +38,7 @@ char				*ft_strdup_pf(const char *s, unsigned int start,
 char				*ft_strdup(const char *s);
 void				ft_putstr(char *s);
 size_t				ft_strlen(const char *str);
+unsigned int		ft_strlen_int(const char *str);
 unsigned int		ft_atoi_printf(const char *str, unsigned int *pos,
 									t_flag *flags);
 int					ft_char(va_list args, int *res, t_flag *flags);
@@ -56,23 +58,14 @@ int					ft_x(va_list args, int *res, t_flag *flags);
 int					ft_bigx(va_list args, int *res, t_flag *flags);
 int					ft_int(va_list args, int *res, t_flag *flags);
 int					ft_unsint(va_list args, int *res, t_flag *flags);
-void				manage_negative(char *s, char *tmp, unsigned int *dif,
-										unsigned int *i);
-void				ft_int_left(char *s, char *tmp, unsigned int width,
-									unsigned int length);
-void				ft_int_left_np(char *s, char *tmp, unsigned int width,
-									unsigned int length);
-void				ft_int_right(char *s, char *tmp, unsigned int width,
-									unsigned int length);
-void				ft_int_right_0(char *s, char *tmp, unsigned int width,
-									unsigned int length);
-void				display_int(char *tmp1, int *res, char *tmp);
 int					manage_precision_0(t_flag *flags, char *tmp);
 void				int_format(t_flag *flags, char *tmp, unsigned int *width,
 								unsigned int *length);
 void				change_size(unsigned int *size, char *tmp,
 									unsigned int *width, unsigned int *length);
-char				*create_int(char *tmp, t_flag *flags, unsigned int width,
+void				create_int_minus(char *tmp, t_flag *flags, unsigned int width,
+									unsigned int length);
+void				create_int_right(char *tmp, t_flag *flags, unsigned int width,
 									unsigned int length);
 void				man_neg(int n, unsigned int *nbr, unsigned int *size,
 								int mod);

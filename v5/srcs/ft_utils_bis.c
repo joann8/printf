@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:28 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 11:49:55 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 13:55:26 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ size_t			ft_strlen(const char *str)
 	i = 0;
 	while (str[i])
 		i++;
+	return (i);
+}
+
+unsigned int			ft_strlen_int(const char *str)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	if (str[0] == '-')
+		i--;
 	return (i);
 }
 

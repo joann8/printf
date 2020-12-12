@@ -6,126 +6,76 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/10 13:53:28 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 18:26:05 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
 
-void		manage_negative(char *s, char *tmp, unsigned int *dif,
-								unsigned int *i)
+int		manage_precision_0(t_flag *flags, char *tmp) //  a verifier
 {
-	if (s[0] == '-')
+	if (flags->b_width == 0)
 	{
-		*dif = 1;
-		tmp[*i] = '-';
-		*i += 1;
+		write(1, "", 0);
+		free(tmp);
+		return (1);
 	}
+	return (0);
 }
 
-void		ft_int_left_np(char *s, char *tmp, unsigned int width,
-							unsigned int length)
+void	int_format(t_flag *flags, char *tmp, unsigned int *width,
+						unsigned int *length)
 {
-	unsigned int i;
-
-	(void)length;
-	i = 0;
-	while (s[i] && (i < width))
-	{
-		tmp[i] = s[i];
-		i++;
-	}
-	while (i < width)
-	{
-		tmp[i] = ' ';
-		i++;
-	}
-	tmp[i] = '\0';
+	if (flags->b_precision == 1 && *length < flags->v_length)
+		*length = flags->v_length;
+	if (flags->b_width == 1 && *width < flags->v_width)
+		*width = flags->v_width;
+	if (*width <= *length + flags->b_intneg) 
+		*width = *length + flags->b_intneg;	
 }
 
-void		ft_int_left(char *s, char *tmp, unsigned int width,
+void	create_int_minus(char *tmp, t_flag *flags, unsigned int width,
 							unsigned int length)
 {
-	unsigned int i;
-	unsigned int j;
-	unsigned int dif;
+	if (flags->b_intneg == 1)
+	{
+		write(1, "-", 1);
+		width--;
+	}
+	while (length > ft_strlen(tmp))
+	{
+		write(1, "0", 1);
+		length--;
+		width--;
+	}
+	ft_putstr(tmp);
+	while (width > ft_strlen(tmp))
+	{
+		write(1, " ", 1);
+		width--;
+	}
+}		
 
-	i = 0;
-	dif = 0;
-	manage_negative(s, tmp, &dif, &i);
-	while (i - dif < length - ft_strlen(s))
-	{
-		tmp[i] = '0';
-		i++;
-	}
-	j = 0;
-	while (s[j + dif] && j < ft_strlen(s))
-	{
-		tmp[i] = s[j + dif];
-		i++;
-		j++;
-	}
-	while (i < width)
-	{
-		tmp[i] = ' ';
-		i++;
-	}
-	tmp[i] = '\0';
-}
-
-void		ft_int_right(char *s, char *tmp, unsigned int width,
+void	create_int_right(char *tmp, t_flag *flags, unsigned int width,
 							unsigned int length)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	dif;
-
-	i = 0;
-	dif = 0;
-	while (i < width - length)
+	if (flags->b_flag_zero == 0)
 	{
-		tmp[i] = ' ';
-		i++;
+		while (width > length + flags->b_intneg)
+		{
+			write(1, " ", 1);
+			width--;
+		}
 	}
-	manage_negative(s, tmp, &dif, &i);
-	j = 0;
-	while (j++ < length - ft_strlen(s))
+	if (flags->b_intneg == 1)
 	{
-		tmp[i] = '0';
-		i++;
-	}
-	j = 0;
-	while (s[j + dif] && (i + j < length || i + j < width))
+		write(1, "-", 1);
+		width--;
+	}	
+	while (width > ft_strlen(tmp))
 	{
-		tmp[i + j] = s[j + dif];
-		j++;
+		write(1, "0", 1);
+		width--;
 	}
-	tmp[i + j] = '\0';
-}
-
-void		ft_int_right_0(char *s, char *tmp, unsigned int width,
-							unsigned int length)
-{
-	unsigned int i;
-	unsigned int j;
-	unsigned int dif;
-
-	i = 0;
-	dif = 0;
-	manage_negative(s, tmp, &dif, &i);
-	j = 0;
-	while (j < length - ft_strlen(s))
-	{
-		tmp[i] = '0';
-		i++;
-		j++;
-	}
-	j = 0;
-	while (s[j + dif] && (i < length || i < width))
-	{
-		tmp[i] = s[j + dif];
-		i++;
-		j++;
-	}
-	tmp[i] = '\0';
+	ft_putstr(tmp);
 }
