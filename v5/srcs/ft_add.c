@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 22:11:41 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 22:12:22 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int				ft_p(va_list args, int *res, t_flag *flags)
 	}
 	*res += width;
 	if (flags->b_flag_minus == 0)
-		ft_add_right(tmp, tmp1, width);
+		ft_add_right(tmp, width);
 	else
-		ft_add_left(tmp, tmp1, width);
+		ft_add_left(tmp, width);
 	free(tmp);
 //	display_add(tmp1, res, tmp);
 	return (1);
