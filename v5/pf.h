@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 21:00:39 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 21:54:18 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ void				display_char(char car, unsigned int size, t_flag *flags,
 								char *c);
 void				display_c(char *c, int *res);
 int					ft_p(va_list args, int *res, t_flag *flags);
-void				display_add(char *tmp1, int *res, char *tmp);
-void				ft_add_left(char *tmp, char *tmp1, unsigned int width);
-void				ft_add_right(char *tmp, char *tmp1, unsigned int width);
+void				ft_add_left(char *tmp, unsigned int width);
+void				ft_add_right(char *tmp, unsigned int width);
 int					is_a_type(char c);
 void				flag_init(t_flag *flags);
 int					ft_x(va_list args, int *res, t_flag *flags);
@@ -89,4 +88,5 @@ char				*ft_putadd(void *add, t_flag *flags);
 int					ft_string(va_list args, int *res, t_flag *flags);
 char				*string_null(int *bol, t_flag *flags);
 char				*string_precision(char *s, t_flag *flags);
+
 #endif
