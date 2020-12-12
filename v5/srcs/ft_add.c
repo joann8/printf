@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 22:14:17 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 22:15:45 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,11 @@ void			ft_add_left(char *tmp, unsigned int width)
 		i++;
 	}
 }
-/*
-void			display_add(char *tmp1, int *res, char *tmp)
-{
-	ft_putstr(tmp1);
-	*res += ft_strlen(tmp1);
-	free(tmp1);
-	free(tmp);
-}*/
 
 int				ft_p(va_list args, int *res, t_flag *flags)
 {
 	void			*ptr;
 	char			*tmp;
-	char			*tmp1;
 	unsigned int	width;
 
 	ptr = va_arg(args, void*);
@@ -60,17 +51,11 @@ int				ft_p(va_list args, int *res, t_flag *flags)
 	width = ft_strlen(tmp);
 	if (flags->b_width == 1 && width < flags->v_width)
 		width = flags->v_width;
-	if (!(tmp1 = malloc(sizeof(char) * (width + 1))))
-	{
-		free(tmp);
-		return ((*res = -1));
-	}
 	*res += width;
 	if (flags->b_flag_minus == 0)
 		ft_add_right(tmp, width);
 	else
 		ft_add_left(tmp, width);
 	free(tmp);
-//	display_add(tmp1, res, tmp);
 	return (1);
 }
