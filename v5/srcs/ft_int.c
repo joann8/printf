@@ -6,12 +6,11 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 19:39:56 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 21:02:23 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
-#include <stdio.h>
 
 int		ft_unsint(va_list args, int *res, t_flag *flags)
 {
@@ -28,8 +27,8 @@ int		ft_unsint(va_list args, int *res, t_flag *flags)
 			return (1);
 	width = ft_strlen(tmp);
 	length = ft_strlen(tmp);
-	int_format(flags, tmp, &width, &length);
-	*res += width;	
+	int_format(flags, &width, &length);
+	*res += width;
 	if (flags->b_flag_minus == 1)
 		create_int_minus(tmp, flags, width, length);
 	else
@@ -44,7 +43,7 @@ int		ft_int(va_list args, int *res, t_flag *flags)
 	char			*tmp;
 	unsigned int	width;
 	unsigned int	length;
-	
+
 	d = va_arg(args, int);
 	if (d < 0)
 		flags->b_intneg = 1;
@@ -55,7 +54,7 @@ int		ft_int(va_list args, int *res, t_flag *flags)
 			return (1);
 	width = ft_strlen(tmp);
 	length = ft_strlen(tmp);
-	int_format(flags, tmp, &width, &length);
+	int_format(flags, &width, &length);
 	*res += width;
 	if (flags->b_flag_minus == 1)
 		create_int_minus(tmp, flags, width, length);

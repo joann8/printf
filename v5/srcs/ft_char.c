@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 12:04:15 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 21:03:44 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ int		ft_char(va_list args, int *res, t_flag *flags)
 
 	size = 1;
 	c = NULL;
-	//if (flags->b_flag_zero == 1 || flags->b_precision == 1) to delete
-//		return ((*res = -1));
 	if (flags->b_width == 1 && flags->v_width > 1)
 		size = flags->v_width;
 	if ((car = (char)va_arg(args, int)) == '\0')

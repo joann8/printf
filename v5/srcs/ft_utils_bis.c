@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:28 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 19:07:43 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 20:51:00 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,11 @@ unsigned int	ft_atoi_printf(const char *str, unsigned int *pos,
 		if (mod == 1)
 		{
 			flags->b_flag_minus = 1;
-			flags->b_flag_zero = 0; //ajout
+			flags->b_flag_zero = 0;
 			i++;
 		}
 		if (mod == 2)
-		{
-			flags->b_precision = 0;
-			return (0);
-		}
+			return ((flags->b_precision = 0));
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{

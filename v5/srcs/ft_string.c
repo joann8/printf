@@ -6,15 +6,15 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 20:35:07 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 20:52:49 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
 
-char *string_precision(char *s, t_flag *flags)
+char			*string_precision(char *s, t_flag *flags)
 {
-	char 			*tmp;
+	char			*tmp;
 	unsigned int	length;
 	unsigned int	i;
 
@@ -64,6 +64,7 @@ void			display_string(t_flag *flags, char *tmp_p, unsigned int width)
 		}
 		ft_putstr(tmp_p);
 	}
+	free(tmp_p);
 }
 
 int				ft_string(va_list args, int *res, t_flag *flags)
@@ -89,8 +90,7 @@ int				ft_string(va_list args, int *res, t_flag *flags)
 	else if (flags->b_precision == 1 && flags->v_length < width)
 		width = flags->v_length;
 	*res += width;
-	display_string(flags, tmp_p, width);	
-	free (tmp_p);
+	display_string(flags, tmp_p, width);
 	if (bol == 1)
 		free(s);
 	return (1);

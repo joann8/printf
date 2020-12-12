@@ -6,47 +6,37 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 19:39:04 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/12 21:15:09 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pf.h"
 
-void	ft_width(t_flag *flags, va_list args)
+void	ft_star(t_flag *flags, va_list args)
 {
 	int				s_tmp;
-	unsigned int	width;
 
-	width = 0;
-	s_tmp = (int)va_arg(args, int);
-	if (s_tmp < 0)
+	if (flags->b_star_width == 1)
 	{
-		width = -s_tmp;
-		flags->b_flag_minus = 1; // sure ? a checker
-		flags->b_flag_zero = 0;// pas sure
-
+		if ((s_tmp = (int)va_arg(args, int)) < 0)
+		{
+			flags->v_width = -s_tmp;
+			flags->b_flag_minus = 1;
+			flags->b_flag_zero = 0;
+		}
+		else
+			flags->v_width = s_tmp;
 	}
-	else if (s_tmp >= 0) // >= 
-		width = s_tmp;
-	flags->v_width = width;
-	return ;
-}
-
-void	ft_length(t_flag *flags, va_list args)
-{
-	int				s_tmp;
-	unsigned int	length;
-
-	length = 0;
-	s_tmp = (int)va_arg(args, int);
-	if (s_tmp < 0)
+	if (flags->b_star_length == 1)
 	{
-		flags->b_precision = 0;
-		flags->v_length = 0;
+		if ((s_tmp = (int)va_arg(args, int)) < 0)
+		{
+			flags->b_precision = 0;
+			flags->v_length = 0;
+		}
+		else
+			flags->v_length = s_tmp;
 	}
-	else
-		flags->v_length = s_tmp;
-	return ;
 }
 
 void	flag_parsing_width(t_flag *flags, char *str, unsigned int *index)
@@ -63,8 +53,8 @@ void	flag_parsing_width(t_flag *flags, char *str, unsigned int *index)
 	else if (str[i] == '-' && str[i + 1] == '*')
 	{
 		flags->b_star_width = 1;
-		flags->b_flag_minus = 1; // sure ? a checker
-		flags->b_flag_zero = 0; // ajout
+		flags->b_flag_minus = 1;
+		flags->b_flag_zero = 0;
 		i++;
 	}
 	else
@@ -118,13 +108,9 @@ int		flag_parsing(t_flag *flags, char *str, unsigned int *pos,
 	if (is_a_type(str[i]) == 0)
 		return (0);
 	*pos = *pos + i + 1;
-	if (flags->b_star_width == 1)
-		ft_width(flags, args);
-	if (flags->b_star_length == 1)
-		ft_length(flags, args);
-	if(flags->b_precision == 1) // ajout
-		if(str[i] == 'x' || str[i] == 'X' || str[i] == 'i' || str[i] == 'u'
-			|| str[i] == 'd')
-			flags->b_flag_zero = 0;
+	ft_star(flags, args);
+	if (flags->b_precision == 1 && (str[i] == 'x' || str[i] == 'X' ||
+			str[i] == 'i' || str[i] == 'u' || str[i] == 'd'))
+		flags->b_flag_zero = 0;
 	return (1);
 }
