@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 14:28:47 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/13 12:02:24 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/13 14:35:19 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		manage_precision_0(t_flag *flags, char *tmp)
 {
 	if (flags->b_width == 0 || (flags->b_width == 1 && flags->v_width == 0))
 	{
-		//write(1, "", 0);
 		free(tmp);
 		return (1);
 	}

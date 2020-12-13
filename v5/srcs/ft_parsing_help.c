@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/13 13:13:04 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/13 14:41:46 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	flag_parsing_precision(t_flag *flags, char *str, unsigned int *index)
 	{
 		while (str[i] == '-')
 			i++;
-		flags->v_length = ft_atoi_printf(str + i, &i, flags, 2);	
+		flags->v_length = ft_atoi_printf(str + i, &i, flags, 2);
 		flags->b_precision = 0;
 		flags->v_length = 0;
 	}
@@ -90,12 +90,11 @@ void	flag_parsing_precision(t_flag *flags, char *str, unsigned int *index)
 	*index = i;
 }
 
-int		flag_parsing(t_flag *flags, char *str, unsigned int *pos,
-						va_list args)
+void	init_parsing(t_flag *flags, unsigned int *index)
 {
-	unsigned int i;
+	unsigned int	i;
 
-	i = 0;
+	i = *index;
 	if (str[i] == '-')
 	{
 		flags->b_flag_minus = 1;
@@ -107,6 +106,16 @@ int		flag_parsing(t_flag *flags, char *str, unsigned int *pos,
 		while (str[i] == '0')
 			i++;
 	}
+	*idex = i;
+}
+
+int		flag_parsing(t_flag *flags, char *str, unsigned int *pos,
+						va_list args)
+{
+	unsigned int i;
+
+	i = 0;
+	init_parsing(flags, &i);
 	if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-' || str[i] == '*')
 		flag_parsing_width(flags, str, &i);
 	if (str[i] == '.')

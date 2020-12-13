@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 21:58:07 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/13 14:53:06 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ char				*ft_itoa_unsint(unsigned int n);
 char				*ft_itoa_x(unsigned int n, char letter);
 void				fill_table(unsigned int n, char *tab, int size,
 								char letter);
-void				ft_width(t_flag *flags, va_list args);
-void				ft_length(t_flag *flags, va_list args);
+void				ft_star(t_flag *flags, va_list args);
 void				flag_parsing_width(t_flag *flags, char *str,
 										unsigned int *index);
 void				flag_parsing_precision(t_flag *flags, char *str,
 											unsigned int *index);
+void				init_parsing(t_flag *flags, unsigned int *index);
 int					flag_parsing(t_flag *flags, char *str, unsigned int *pos,
 									va_list args);
 void				display_percent(char car, unsigned int size,
@@ -83,9 +83,10 @@ void				display_percent(char car, unsigned int size,
 int					ft_percent(va_list args, int *res, t_flag *flags);
 void				fill_table_hexa(unsigned long n, char *tab, int size,
 										t_flag *flags);
-void				manage_neg_hexa(long n, unsigned long *nb);
 char				*ft_putadd(void *add, t_flag *flags);
 int					ft_string(va_list args, int *res, t_flag *flags);
+void				display_string(t_flag *flags, char *tmp_p,
+										unsigned int width);
 char				*string_null(int *bol, t_flag *flags);
 char				*string_precision(char *s, t_flag *flags);
 
