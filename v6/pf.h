@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/13 15:08:18 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/13 15:54:27 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char				*ft_putadd(void *add, t_flag *flags);
 int					ft_string(va_list args, int *res, t_flag *flags);
 void				display_string(t_flag *flags, char *tmp_p,
 										unsigned int width);
-char				*string_null(int *bol, t_flag *flags);
+char				*string_null(int *bol);
 char				*string_precision(char *s, t_flag *flags);
 
 #endif

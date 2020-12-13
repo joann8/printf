@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:18:21 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 20:52:49 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/13 15:53:52 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ char			*string_precision(char *s, t_flag *flags)
 	return (tmp);
 }
 
-char			*string_null(int *bol, t_flag *flags)
+char			*string_null(int *bol)
 {
 	char *s;
 
 	s = ft_strdup("(null)");
 	*bol = 1;
-	if (flags->b_width == 0 && flags->b_star_length == 1)
-		flags->b_precision = 0;
 	return (s);
 }
 
