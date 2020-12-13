@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/12 21:15:09 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/13 13:01:32 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,28 @@ void	ft_star(t_flag *flags, va_list args)
 
 void	flag_parsing_width(t_flag *flags, char *str, unsigned int *index)
 {
-	unsigned int i;
-
-	i = *index;
 	flags->b_width = 1;
-	if (str[i] == '*')
+	if (str[*index] == '*')
 	{
 		flags->b_star_width = 1;
-		i++;
+		(*index)++;
 	}
-	else if (str[i] == '-' && str[i + 1] == '*')
+	else if (str[(*index)] == '-')
 	{
-		flags->b_star_width = 1;
 		flags->b_flag_minus = 1;
 		flags->b_flag_zero = 0;
-		i++;
+		while (str[(*index)] == '-')
+			(*index)++;
+		if (str[(*index)] == '*')
+		{
+			flags->b_star_width = 1;
+			(*index)++;
+		}
+		else
+			flags->v_width = ft_atoi_printf(str + (*index), index, flags, 1);
 	}
 	else
-		flags->v_width = ft_atoi_printf(str + i, &i, flags, 1);
-	*index = i;
+		flags->v_width = ft_atoi_printf(str + (*index), index, flags, 1);
 }
 
 void	flag_parsing_precision(t_flag *flags, char *str, unsigned int *index)
@@ -76,9 +79,11 @@ void	flag_parsing_precision(t_flag *flags, char *str, unsigned int *index)
 	}
 	else if (str[i] == '-')
 	{
+		while (str[i] == '-')
+			i++;
+		flags->v_length = ft_atoi_printf(str + i, &i, flags, 2);	
 		flags->b_precision = 0;
 		flags->v_length = 0;
-		i++;
 	}
 	else
 		flags->v_length = ft_atoi_printf(str + i, &i, flags, 2);
