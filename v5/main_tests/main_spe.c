@@ -27,7 +27,23 @@ int main()
 	d1 = -12;
 	d2 = -3456;
 
-
+	printf("pf this %d number\n", 0);
+	ft_printf("ff this %d number\n", 0);
+	
+	printf("pf %*d.\n", -6, -3);
+	ft_printf("ff %*d.\n", -6, -3);
+	printf("pf %*.5d.\n", -6, -3);
+	ft_printf("ff %*.5d.\n", -6, -3);
+	printf("pf %-*d.\n", 6, -3);
+	ft_printf("ff %-*d.\n", 6, -3);
+	printf("\n*****\n");	
+	printf("pf %.*d.\n", -6, -3);
+	ft_printf("ff %.*d.\n", -6, -3);
+	printf("pf %5.*d.\n", -6, -3);
+	ft_printf("ff %5.*d.\n", -6, -3);
+	printf("pf %-.*d.\n", 6, -3);
+	ft_printf("ff %-.*d.\n", 6, -3);
+	printf("\n*****\n");	
 	printf("pf %0.5d.\n", -2732);
 	ft_printf("ff %0.5d.\n", -2732);
 	printf("pf %010.5d.\n", -2732);
@@ -195,7 +211,7 @@ int main()
 
 
 //TEST STRING DETAILLEE
-/*	printf("\n\n1.pf | %s.\n",s2);	
+	printf("\n\n1.pf | %s.\n",s2);	
 	ft_printf("1.my | %s.", s2);
 	
 	printf("\n\n2.pf | %.3s | %.8s.\n", s2, s2);	
@@ -215,7 +231,7 @@ int main()
 	
 	printf("\n\n7.pf | %4.3s | %7.3s.\n", s2, s2);	
 	ft_printf("7.my | %4.3s | %7.3s.", s2, s2);
-*/	
+	
 /*
 
 
