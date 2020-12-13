@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/13 13:01:32 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/13 13:13:04 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ int		flag_parsing(t_flag *flags, char *str, unsigned int *pos,
 	if (str[i] == '0' && i == 0)
 	{
 		flags->b_flag_zero = 1;
-		i++;
+		while (str[i] == '0')
+			i++;
 	}
 	if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-' || str[i] == '*')
 		flag_parsing_width(flags, str, &i);
