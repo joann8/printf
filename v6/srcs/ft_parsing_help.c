@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 20:18:11 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/13 14:41:46 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/13 15:08:43 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	flag_parsing_precision(t_flag *flags, char *str, unsigned int *index)
 	*index = i;
 }
 
-void	init_parsing(t_flag *flags, unsigned int *index)
+void	init_parsing(t_flag *flags, char *str, unsigned int *index)
 {
 	unsigned int	i;
 
@@ -106,7 +106,7 @@ void	init_parsing(t_flag *flags, unsigned int *index)
 		while (str[i] == '0')
 			i++;
 	}
-	*idex = i;
+	*index = i;
 }
 
 int		flag_parsing(t_flag *flags, char *str, unsigned int *pos,
@@ -115,7 +115,7 @@ int		flag_parsing(t_flag *flags, char *str, unsigned int *pos,
 	unsigned int i;
 
 	i = 0;
-	init_parsing(flags, &i);
+	init_parsing(flags, str, &i);
 	if ((str[i] >= '0' && str[i] <= '9') || str[i] == '-' || str[i] == '*')
 		flag_parsing_width(flags, str, &i);
 	if (str[i] == '.')

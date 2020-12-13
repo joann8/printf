@@ -6,7 +6,7 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:34:43 by jacher            #+#    #+#             */
-/*   Updated: 2020/12/13 14:53:06 by jacher           ###   ########.fr       */
+/*   Updated: 2020/12/13 15:08:18 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void				flag_parsing_width(t_flag *flags, char *str,
 										unsigned int *index);
 void				flag_parsing_precision(t_flag *flags, char *str,
 											unsigned int *index);
-void				init_parsing(t_flag *flags, unsigned int *index);
+void				init_parsing(t_flag *flags, char *str, unsigned int *index);
 int					flag_parsing(t_flag *flags, char *str, unsigned int *pos,
 									va_list args);
 void				display_percent(char car, unsigned int size,
